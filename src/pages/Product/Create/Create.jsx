@@ -11,18 +11,15 @@ export const Create = () => {
   const [inputs, setInputs] = useState({
     title: '',
     desc: '',
-    firstImg: '',
+    images: [],
     secondImg: '',
     price: 0,
     starts: '1'
   })
 
   const onChangeFileFirst = (e) => {
-    setInputs({ ...inputs, firstImg: e.target.files[0] })
-  }
-
-  const onChangeFileSecond = (e) => {
-    setInputs({ ...inputs, secondImg: e.target.files[0] })
+    console.log(e.target.files)
+    setInputs({ ...inputs, images: e.target.files })
   }
 
   const handleCloseImg = (numberImg) => {
@@ -36,42 +33,33 @@ export const Create = () => {
   }
   const handleCreateProduct = async(e) => {
     e.preventDefault()
-
+    
     try {
-      const formData1 = new FormData()
-      const formData2 = new FormData()
-
-      let filename1 = null
-      let filename2 = null
-
-      if(inputs.firstImg && inputs.secondImg) {
-        filename1 = crypto.randomUUID() + '___' + inputs.firstImg.name
-        filename2 = crypto.randomUUID() + '___' + inputs.secondImg.name
-
-        formData1.append('filename', filename1)
-        formData1.append('image', inputs.firstImg)
-
-        formData2.append('filename', filename2)
-        formData2.append('image', inputs.secondImg)
-
-        await axios.post(`http://localhost:5000/files/firstimg`, formData1, { headers: {
-          'Content-Type': 'multipart/form-data',
-          'Authorization': `Bearer ${token}`
-        }})
-        await axios.post(`http://localhost:5000/files/secondimg`, formData2, { headers: {
-          'Content-Type': 'multipart/form-data',
-          'Authorization': `Bearer ${token}`
-        }})
-      }
+      let filesnames = []
+      const files = inputs.images ? [...inputs.images] : [];
       
+      const formData = new FormData()
+      files.forEach((file) => {
+        filesnames.push(crypto.randomUUID() + '___' + file.name)
+        formData.append(`images`, file);
+      });
+
+      for (var pair of formData.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]); 
+      }
+
+      await axios.post(`http://localhost:5000/files/firstimg`, formData, { headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${token}`
+      }})
+
       const newProduct = {
         ...inputs,
-        firstImg: filename1,
-        secondImg: filename2
+        images: filesnames,
       }
 
       console.log(newProduct)
-
+      
       await axios.post(`http://localhost:5000/product`, newProduct, { headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
@@ -130,29 +118,18 @@ export const Create = () => {
                 onChange={(e) => { handleInputs(e) }}
               />
             </div>
-            <div className='inputWrapper mt-2'>
-              <label className="labelFileInput" htmlFor="firstImg">First Image: <span className='px-4 py-2 rounded-full bg-blue-400 text-white font-medium text-sm'>Upload here</span></label>
+            <div className='mt-2'>
+              <label className="labelFileInput" htmlFor="images">First Image: <span className='px-4 py-2 rounded-full bg-blue-400 text-white font-medium text-sm'>Upload here</span></label>
               <input 
                 type='file' 
-                name='firstImg'
-                id='firstImg'
+                name='images'
+                id='images'
+                multiple="multiple"
                 className="hidden input"
-                placeholder="firstImg"
+                placeholder="Images"
                 onChange={onChangeFileFirst}
               />
               { inputs.firstImg && <p className="imageName">{inputs.firstImg.name} <AiOutlineCloseCircle onClick={() => handleCloseImg('first')} className={`closeIcon cursor-pointer`} /></p> }
-            </div>
-            <div className='inputWrapper mt-4'>
-              <label className="labelFileInput" htmlFor="secondImg">Second Image: <span className='px-4 py-2 rounded-full bg-blue-400 text-white font-medium text-sm'>Upload here</span></label>
-              <input 
-                type='file' 
-                name='secondImg'
-                id='secondImg'
-                className="hidden input"
-                placeholder="secondImg"
-                onChange={onChangeFileSecond}
-              />
-              { inputs.secondImg && <p className="imageName">{inputs.secondImg.name} <AiOutlineCloseCircle onClick={() => handleCloseImg('second')} className={`closeIcon cursor-pointer`} /></p> }
             </div>
             <button className='px-4 py-2 bg-blue-400 rounded-md text-white font-medium mt-5 w-full '>Save</button>
           </form>
