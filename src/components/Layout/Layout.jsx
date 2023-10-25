@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Navbar, Footer } from "../index";
+import { Navbar } from "../index";
 
 export const Layout = ({ children }) => {
   return (
@@ -10,7 +10,6 @@ export const Layout = ({ children }) => {
         {children}
       </div>
 
-      <Footer />
     </div>
   );
 };
