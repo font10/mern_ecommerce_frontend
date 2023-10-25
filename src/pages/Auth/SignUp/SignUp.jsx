@@ -48,8 +48,8 @@ export const SignUp = () => {
 
   return (
     <div className="absolute flex flex-row justify-center top-0 right-0 mx-auto w-full h-full z-10 items-center bg-cyan-800">
-      <div className="flex flex-col w-4/12 p-10 bg-white shadow-xl rounded-md w-full">
-        <h2 className='font-medium text-xl text-black'>Sign Up</h2>
+      <div className="flex flex-col w-4/12 p-10 bg-white shadow-xl rounded-md w-4/12">
+        <h2 className='font-medium font-roboto text-2xl text-black'>Sign Up</h2>
 
         {
           error &&
@@ -60,7 +60,7 @@ export const SignUp = () => {
 
         <form onSubmit={handleLogin}>
         <div className='flex flex-col w-full mt-5'>
-            <label>Username</label>
+            <label className='font-roboto font-medium text-[15px]'>Username</label>
             <input 
               type='text' 
               name='username' 
@@ -70,7 +70,7 @@ export const SignUp = () => {
             />
           </div>
           <div className='flex flex-col w-full'>
-            <label>Email</label>
+            <label className='font-roboto font-medium text-[15px]'>Email</label>
             <input 
               type='email' 
               name='email' 
@@ -80,7 +80,7 @@ export const SignUp = () => {
             />
           </div>
           <div className='flex flex-col w-full'>
-            <label>Password</label>
+            <label className='font-roboto font-medium text-[15px]'>Password</label>
             <input 
               type='password' 
               name='password' 
@@ -93,7 +93,7 @@ export const SignUp = () => {
         </form>
 
         <div className='flex justify-center mt-8 font-regular gap-2'>
-          Already have an account? <Link to={route.signup.path} className='text-cyan-500 font-medium'>Sign In!</Link>
+          Already have an account? <Link to={route.login.path} className='text-cyan-500 font-medium'>Sign In!</Link>
         </div>
         
       </div>

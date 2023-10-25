@@ -9,5 +9,5 @@ export {
   Footer,
   Layout,
   List,
-  Navbar
+  Navbar,
 }

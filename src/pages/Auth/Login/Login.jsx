@@ -47,7 +47,7 @@ export const Login = () => {
 
   return (
     <div className="absolute flex flex-row justify-center top-0 right-0 mx-auto w-full h-full z-10 items-center bg-cyan-800">
-      <div className="flex flex-col w-3/12 p-10 bg-white shadow-xl rounded-md w-full">
+      <div className="flex flex-col w-3/12 p-10 bg-white shadow-xl rounded-md w-4/12">
         <h2 className='font-medium text-xl text-black'>Login</h2>
 
         {
