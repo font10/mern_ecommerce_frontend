@@ -12,7 +12,6 @@ export const Create = () => {
     title: '',
     desc: '',
     images: [],
-    secondImg: '',
     price: 0,
     starts: '1'
   })

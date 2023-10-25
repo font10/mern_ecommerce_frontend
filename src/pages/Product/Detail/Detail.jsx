@@ -53,6 +53,9 @@ export const Detail = () => {
     );
     setQuantityProduct(1);
   };
+
+  console.log(product)
+  console.log(currentImage)
   
   return (
     <div className="flex items-center justify-center mx-auto w-10/12 xl:w-8/12 mt-20">
@@ -60,18 +63,20 @@ export const Detail = () => {
         
         <div className='flex-1 flex gap-5'>
           <div>
-            <img src={currentImage} alt="pic product detail" className="h-96 object.cover w-[950px]" />
-            <div className='flex flex-wrap gap-2 mt-6'>
+            <img src={currentImage} alt="pic product detail" className="h-96 object-cover w-[650px]" />
+            <div className='flex flex-wrap gap-1 mt-6'>
               { 
                 product?.images.map((img, i) => (
                   <div key={img} className=''>
-                    <img 
-                      src={`http://localhost:5000/images/` + product?.images[i].split('___').splice(1)} 
-                      alt="" 
-                      width={130}
-                      className='cursor-pointer h-24' 
-                      onClick={() => setCurrentImage(`http://localhost:5000/images/` + product?.images[i].split('___').splice(1))}
-                    />
+                    {
+                      `http://localhost:5000/images/` + img.split('___').splice(1) === currentImage ? '' : <img 
+                        src={`http://localhost:5000/images/` + product?.images[i].split('___').splice(1)} 
+                        alt="" 
+                        width={202}
+                        className='cursor-pointer h-24 object-cover' 
+                        onClick={() => setCurrentImage(`http://localhost:5000/images/` + product?.images[i].split('___').splice(1))}
+                      />
+                    }
                   </div>
                 )) 
               }
