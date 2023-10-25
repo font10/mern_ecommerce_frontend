@@ -20,7 +20,7 @@ export const Detail = () => {
 
     if(status === 200) {
       setProduct(data.product)
-      setCurrentImage(`http://localhost:5000/images/` + data.product.firstImg.split('___').splice(1) )
+      setCurrentImage(`http://localhost:5000/images/` + data.product.images[0].split('___').splice(1) )
     }
   }
 
@@ -60,22 +60,21 @@ export const Detail = () => {
         
         <div className='flex-1 flex gap-5'>
           <div>
-            <img src={currentImage} alt="pic product detail" className="h-96 object.cover" width={800} />
+            <img src={currentImage} alt="pic product detail" className="h-96 object.cover w-[950px]" />
             <div className='flex flex-wrap gap-2 mt-6'>
-              <img 
-                src={`http://localhost:5000/images/` + product?.firstImg.split('___').splice(1)} 
-                alt="" 
-                width={150}
-                className='cursor-pointer' 
-                onClick={() => setCurrentImage(`http://localhost:5000/images/` + product?.firstImg.split('___').splice(1))}
-              />
-              <img 
-                src={`http://localhost:5000/images/` + product?.secondImg.split('___').splice(1)} 
-                alt="" 
-                width={150}
-                className='cursor-pointer' 
-                onClick={() => setCurrentImage(`http://localhost:5000/images/` + product?.secondImg.split('___').splice(1))}
-              />
+              { 
+                product?.images.map((img, i) => (
+                  <div key={img} className=''>
+                    <img 
+                      src={`http://localhost:5000/images/` + product?.images[i].split('___').splice(1)} 
+                      alt="" 
+                      width={130}
+                      className='cursor-pointer h-24' 
+                      onClick={() => setCurrentImage(`http://localhost:5000/images/` + product?.images[i].split('___').splice(1))}
+                    />
+                  </div>
+                )) 
+              }
             </div>
           </div>
         </div>
