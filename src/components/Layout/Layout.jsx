@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Navbar } from "../index";
+import { Navbar, Footer } from "../index";
 
 export const Layout = ({ children }) => {
   return (
@@ -7,7 +7,8 @@ export const Layout = ({ children }) => {
       <Navbar />
 
       <div className="flex-1 mx-auto w-full justify-center">
-        {children}
+        {children}        
+        <Footer/>
       </div>
 
     </div>
