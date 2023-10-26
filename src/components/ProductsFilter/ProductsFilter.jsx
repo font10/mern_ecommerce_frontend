@@ -3,30 +3,17 @@ import { IoIosArrowDown } from '../../utils/icons'
 import { List } from '../List/List'
 import axios from 'axios'
 import { ModalFilter } from '../ModalFilter/ModalFilter'
+import { categories, filterMenus, size, rangePrice, rangeStars } from '../../utils/constants'
 
 export const ProductsFilter = () => {
+  const [products, setProducts] = useState([])
+  const [error, setError] = useState(false)
   const [modalFilter, setModalFilter] = useState({
     category: false,
     price: false,
     size: false,
     stars: false
-
   })
-  const [products, setProducts] = useState([])
-  const [error, setError] = useState(false)
-
-  const categories = ['Lifestyle', 'Jordan', 'Running', 'Baloncesto', 'Fútbol', 'Gym y training', 'Skateboard', 'Golf', 'Tenis']
-  const size = ['36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48']
-  const rangePrice = ['0-50', '51-100', '101-150', '151-200', '201-250', '251-300']
-  const rangeStars = ['1', '2', '3', '4', '5'] 
-
-  const filterMenus = [
-    { name: 'Category', range: categories },
-    { name: 'Price', range: rangePrice },
-    { name: 'Size', range: size },
-    { name: 'Stars', range: rangeStars },
-  ]
-
 
   const fetchProducts = async() => {
     try {
@@ -65,10 +52,8 @@ export const ProductsFilter = () => {
                   <div className='rounded-full bg-gray-300 hover: bg-gray-100 p-2' onClick={() => handleModal(menu.name)}>
                     <IoIosArrowDown size={20} className='cursor-pointer' />
                   </div>
-                </div>
-                
-              </div>
-              
+                </div>                
+              </div>              
             ))
           }
         </div>
@@ -105,10 +90,6 @@ export const ProductsFilter = () => {
         </div>
 
       </div>
-
-
-
-      
       
       <div className='flex flex-row justify-center gap-3 w-full mt-8'>
         
