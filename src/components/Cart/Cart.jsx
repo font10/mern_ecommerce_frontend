@@ -28,7 +28,7 @@ export const Cart = () => {
   }
 
   return (
-    <div className="absolute bg-gray-50 shadow-2xl top-[66px] bottom-0 right-0 w-1/5 z-5">
+    <div className="absolute bg-gray-50 shadow-2xl top-[83px] bottom-0 right-0 w-3/12 z-5">
       <div className="w-full px-6 py-5 h-full overflow-y-auto sticky">
         
         <CiCircleRemove onClick={handleCloseCart} className="absolute top-5 right-5 cursor-pointer" size={24} />
@@ -44,12 +44,12 @@ export const Cart = () => {
                     <Link to={`${route.product.productDetail.path}/${product.id}`}>
                       <img 
                         src={`http://localhost:5000/images/` + product?.mainImg.split('___').splice(1)}
-                        className="rounded-sm w-52" 
+                        className="rounded-sm w-48" 
                       />
                     </Link>
                     <div className="flex flex-col w-full">
                       <div className="flex flex-row justify-between items-center mt-1">
-                        <span className="text-xl font-medium">Title</span>
+                        <span className="text-xl font-medium">{product.title}</span>
                         <BsFillTrashFill size={20} className="text-red-600 hover:text-red-500 cursor-pointer" onClick={() => removeFromCart(product.id)} />
                       </div>
 

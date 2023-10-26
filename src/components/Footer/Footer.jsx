@@ -2,7 +2,7 @@ import { AiOutlineInstagram, AiOutlineFacebook, AiOutlineTwitter } from '../../u
 
 export const Footer = () => {
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-gray-100">
+    <div className="bottom-0 left-0 w-full bg-gray-100 mt-10">
       <div className="w-9/12 mx-auto flex items-center justify-center my-2 ">
         <div className="flex flex-1 flex-col gap-3 p-5">
           <h2 className='text-xl font-medium'>FAQ</h2>
