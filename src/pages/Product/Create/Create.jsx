@@ -52,8 +52,7 @@ export const Create = () => {
       const newProduct = {
         ...inputs,
         images: filesnames,
-      }
-      
+      }      
       
       await axios.post(`http://localhost:5000/product`, newProduct, { headers: {
         'Content-Type': 'application/json',
@@ -68,7 +67,7 @@ export const Create = () => {
   return (
     <div className="flex justify-center w-4/12 mx-auto mt-10">
       <div className="flex flex-col p-10 shadow-xl rounded-sm w-full">
-        <h2 className="title">
+        
           <form onSubmit={handleCreateProduct} encType="multipart/form-data">            
             <div className='flex flex-col w-full'>
               <label className='font-medium text-gray-700'>Title</label>
@@ -163,7 +162,6 @@ export const Create = () => {
             </div>
             <button className='px-4 py-2 bg-blue-400 rounded-md text-white font-medium mt-6 w-full'>Save</button>
           </form>
-        </h2>
       </div>
     </div>
   )
