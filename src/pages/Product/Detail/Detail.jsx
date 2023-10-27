@@ -1,21 +1,20 @@
 import { BsCartFill, HiMinusSm, HiPlusSm, TbTruckDelivery } from '../../../utils/icons'
 import { numToStars } from '../../../helpers/numToStars'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
-//import { useSelector } from 'react-redux'
 import { addProduct } from '../../../redux/slices/cartSlice'
-//import { CreateComment } from '../../../components/Comments/Create/CreateComment'
 import { Comments } from '../../../components/Comments/Comments'
+import axios from 'axios'
 
 export const Detail = () => {
   const [product, setProduct] = useState(null)
   const [currentImage, setCurrentImage] = useState('')
   const [quantityProduct, setQuantityProduct] = useState(1)
+  const [ratingLength, setRatingLenght] = useState(0)
   const [sizeProduct, setSizeProduct] = useState()
+  const dataFetchedRef = useRef(false)
   const dispatch = useDispatch()
-  //const { products } = useSelector(state => state.cart)
   const { id } = useParams()
 
   const getProduct = async() => {
@@ -27,6 +26,20 @@ export const Detail = () => {
       setCurrentImage(`http://localhost:5000/images/` + data.product.images[0].split('___').splice(1) )
     }
   }
+
+  const getRatingByProduct = async() => {
+    const { data, status } = await axios.get(`http://localhost:5000/comment/${id}`)
+    console.log(data)
+
+    if(status === 200) setRatingLenght(data.comments.lenght)
+  }
+
+  useEffect(() => {
+    if (dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
+    getRatingByProduct()
+  },[])
+  
 
   useEffect(() => {
     try {
@@ -93,7 +106,7 @@ export const Detail = () => {
               {
                 product?.stars && (
                   <div className='flex flex-wrap items-center mt-3'>
-                    <div className='flex flex-wrap items-center font-medium gap-0.25'>{numToStars(product.stars)}<span className='ml-2 font-roboto text-[15px] text-gray-700'>14 Reviews</span></div>
+                    <div className='flex flex-wrap items-center font-medium gap-0.25'>{numToStars(product.stars)}<span className='ml-2 font-roboto text-[15px] text-gray-700'>{ratingLength} Reviews</span></div>
                   </div>
                 )
               }
