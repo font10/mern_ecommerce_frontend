@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
 
-export const ProtectedRoute = ({ redirectTo="/login" }) => {
+export const ProtectedRoute = ({ redirectTo }) => {
   const { token } = useSelector(state => state.auth)
   const location = useLocation();
 
@@ -13,4 +13,8 @@ export const ProtectedRoute = ({ redirectTo="/login" }) => {
 
 ProtectedRoute.propTypes = {
   redirectTo: PropTypes.node.isRequired,
+};
+
+ProtectedRoute.defaultProps = {
+  redirectTo: '/login'
 };

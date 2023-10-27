@@ -28,7 +28,7 @@ export const Cart = () => {
   }
 
   return (
-    <div className="absolute bg-gray-50 shadow-2xl top-[83px] bottom-0 right-0 w-3/12 z-5">
+    <div className="absolute bg-gray-50 shadow-2xl top-[83px] bottom-0 right-0 w-8/12 md:w-5/12 xl:w-3/12 z-5">
       <div className="w-full px-6 py-5 h-full overflow-y-auto sticky">
         
         <CiCircleRemove onClick={handleCloseCart} className="absolute top-5 right-5 cursor-pointer" size={24} />
