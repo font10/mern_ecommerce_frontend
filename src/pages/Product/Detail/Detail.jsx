@@ -3,7 +3,7 @@ import { numToStars } from '../../../helpers/numToStars'
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { addProduct } from '../../../redux/slices/cartSlice'
+import { addProduct, calculateTotal } from '../../../redux/slices/cartSlice'
 import { Comments } from '../../../components/Comments/Comments'
 import axios from 'axios'
 
@@ -29,8 +29,6 @@ export const Detail = () => {
 
   const getRatingByProduct = async() => {
     const { data, status } = await axios.get(`http://localhost:5000/comment/${id}`)
-    console.log(data)
-
     if(status === 200) setRatingLenght(data.comments.lenght)
   }
 
@@ -49,15 +47,16 @@ export const Detail = () => {
     }
   }, [id])
 
-  const addQuantity = () => {
-    setQuantityProduct(prev => prev + 1)
+  const addQuantity = () =>  setQuantityProduct(prev => prev + 1)
+
+  const getItemPriceQuantity = (quantity, price) => {
+    return (quantity * price).toFixed(2)
   }
 
-  const removeQuantity = () => {
-    setQuantityProduct(prev => prev === 1 ? 1 : prev - 1)
-  }
+  const removeQuantity = () =>  setQuantityProduct(prev => prev === 1 ? 1 : prev - 1)
 
   const addProductToCart = () => {
+    console.log(quantityProduct)
     dispatch(
       addProduct({
         quantity: quantityProduct,
@@ -67,9 +66,12 @@ export const Detail = () => {
         id: product?._id,
         category: product?.category,
         gender: product?.gender,
+        size: sizeProduct,
         mainImg: product?.images[0],
+        secretId: product?._id + sizeProduct
       })
     );
+    dispatch(calculateTotal())
     setQuantityProduct(1);
   };
   
@@ -147,7 +149,7 @@ export const Detail = () => {
             </div>
 
             <div>
-              <h2 className='text-2xl text-cyan-700 font-medium mt-4'>{product?.price} €</h2>
+              <h2 className='text-2xl text-cyan-700 font-medium mt-4'>{getItemPriceQuantity(quantityProduct, product?.price)} €</h2>
             </div>
 
             <div className='flex flex-row items-center mt-6 gap-5 p-5 border border-gray-300 rounded-lg'>

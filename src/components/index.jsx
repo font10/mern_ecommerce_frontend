@@ -1,4 +1,5 @@
 import { Cart } from './Cart/Cart'
+import { CartItem } from './Cart/CartItem'
 import { CreateComment } from './Comments/Create//CreateComment'
 import { Comments } from './Comments/Comments'
 import { Footer } from './Footer/Footer'
@@ -10,6 +11,7 @@ import { ProductsFilter } from './ProductsFilter/ProductsFilter'
 
 export { 
   Cart,
+  CartItem,
   CreateComment,
   Comments,
   Footer,
