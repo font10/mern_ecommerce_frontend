@@ -20,14 +20,7 @@ export const CreateComment = ({ id }) => {
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    createComment({
-      token,
-      inputs
-    })
-    /*await axios.post(`http://localhost:5000/comment`, inputs, { headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    }})*/
+    createComment({ token, inputs })
   }
 
   const handleInputs = (e) => {
@@ -35,18 +28,9 @@ export const CreateComment = ({ id }) => {
     setInputs({ ...inputs, [name]: value })
   }
 
-  const handleClick = value => {
-    setInputs({ ...inputs, rating: value })
-  }
-
-  const handleMouseOver = newHoverValue => {
-    setHoverValue(newHoverValue)
-  };
-
-  const handleMouseLeave = () => {
-    setHoverValue(undefined)
-  }
-
+  const handleClick = value => setInputs({ ...inputs, rating: value })
+  const handleMouseOver = newHoverValue => setHoverValue(newHoverValue)
+  const handleMouseLeave = () => setHoverValue(undefined)
 
   return (
     <section className="flex flex-col w-full">
