@@ -1,4 +1,5 @@
-import { Hero, ProductsFilter } from '../../components/index'
+import { Hero } from '../../components/index'
+import { ProductsFilter } from '../../pages/index'
 
 export const Home = () => {
  
