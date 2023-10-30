@@ -1,18 +1,17 @@
-import { useSelector } from 'react-redux';
 import profile from '../../assets/images/profile.png'
 import { numToStars } from "../../helpers/numToStars";
+import { useGetCommentsByProductQuery } from '../../services/commentApi';
+import { useParams } from 'react-router-dom';
 
 export const CommentItem = () => {
-  const { comments } = useSelector(state => state.comment)
-
-  const formatDate = (data) => {
-    return new Date(data).toLocaleDateString()
-  }
+  const { id } = useParams()
+  const { data } = useGetCommentsByProductQuery(id)
+  const formatDate = (data) => { return new Date(data).toLocaleDateString() }
 
   return (
     <section>
       {
-        comments[0]?.map(comm => (
+        data?.comments?.map(comm => (
           <article key={crypto.randomUUID()}>
             <figure className="flex flex-row items-center gap-3 mt-10">
               <img src={profile} width={35} alt="pic user" />

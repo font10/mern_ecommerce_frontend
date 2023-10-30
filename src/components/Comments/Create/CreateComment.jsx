@@ -1,10 +1,12 @@
-import axios from 'axios';
+
 import PropTypes from "prop-types";
 import { FaStar } from '../../../utils/icons'
 import { useState } from 'react'
 import { useSelector } from 'react-redux';
+import { useCreateCommentMutation } from '../../../services/commentApi';
 
 export const CreateComment = ({ id }) => {
+  const [createComment] = useCreateCommentMutation()
   const { user, token } = useSelector(state => state.auth)
   const [hoverValue, setHoverValue] = useState(undefined);
   const stars = Array(5).fill(0)
@@ -18,11 +20,7 @@ export const CreateComment = ({ id }) => {
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    
-    await axios.post(`http://localhost:5000/comment`, inputs, { headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    }})
+    createComment({ token, inputs })
   }
 
   const handleInputs = (e) => {
@@ -30,18 +28,9 @@ export const CreateComment = ({ id }) => {
     setInputs({ ...inputs, [name]: value })
   }
 
-  const handleClick = value => {
-    setInputs({ ...inputs, rating: value })
-  }
-
-  const handleMouseOver = newHoverValue => {
-    setHoverValue(newHoverValue)
-  };
-
-  const handleMouseLeave = () => {
-    setHoverValue(undefined)
-  }
-
+  const handleClick = value => setInputs({ ...inputs, rating: value })
+  const handleMouseOver = newHoverValue => setHoverValue(newHoverValue)
+  const handleMouseLeave = () => setHoverValue(undefined)
 
   return (
     <section className="flex flex-col w-full">
