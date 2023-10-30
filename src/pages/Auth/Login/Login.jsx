@@ -46,19 +46,19 @@ export const Login = () => {
   }
 
   return (
-    <div className="absolute flex flex-row justify-center top-0 right-0 mx-auto w-full h-full z-10 items-center bg-cyan-800">
-      <div className="flex flex-col w-3/12 p-10 bg-white shadow-xl rounded-md w-4/12">
+    <main className="absolute flex flex-row justify-center top-0 right-0 mx-auto w-full h-full z-10 items-center bg-cyan-800">
+      <section className="flex flex-col w-3/12 p-10 bg-white shadow-xl rounded-md w-4/12">
         <h2 className='font-medium text-xl text-black'>Login</h2>
 
         {
           error &&
-          <div className='w-full h-10 rounded-md border border-red-300 text-red-400 bg-red-200 flex justify-center items-center font-medium mt-5'>
+          <p className='w-full h-10 rounded-md border border-red-300 text-red-400 bg-red-200 flex justify-center items-center font-medium mt-5'>
             { errorMsg }
-          </div>
+          </p>
         }
 
         <form onSubmit={handleLogin}>
-          <div className='flex flex-col w-full mt-5'>
+          <article className='flex flex-col w-full mt-5'>
             <label>Email</label>
             <input 
               type='email' 
@@ -67,8 +67,8 @@ export const Login = () => {
               placeholder='Email'
               onChange={(e) => { handleInputs(e) }}
             />
-          </div>
-          <div className='flex flex-col w-full'>
+          </article>
+          <article className='flex flex-col w-full'>
             <label>Password</label>
             <input 
               type='password' 
@@ -77,15 +77,15 @@ export const Login = () => {
               placeholder='Password'
               onChange={(e) => { handleInputs(e) }}
             />
-          </div>
+          </article>
           <button className='px-4 py-2 bg-cyan-500 rounded-md text-white font-medium mt-5 w-full '>Sign In</button>
         </form>
 
-        <div className='flex justify-center mt-8 font-regular gap-2'>
+        <p className='flex justify-center mt-8 font-regular gap-2'>
           Do you have an account? <Link to={route.signup.path} className='text-cyan-500 font-medium'>Sign Up!</Link>
-        </div>
+        </p>
         
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }

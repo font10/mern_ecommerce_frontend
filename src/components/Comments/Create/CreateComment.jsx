@@ -44,7 +44,7 @@ export const CreateComment = ({ id }) => {
 
 
   return (
-    <div className="flex flex-col w-full">
+    <section className="flex flex-col w-full">
       <form onSubmit={handleSubmit} className="w-full mt-5">
         <label className='font-medium text-gray-700'>Rating</label>
         <div className='flex flex-row mb-5 mt-1'>
@@ -83,7 +83,7 @@ export const CreateComment = ({ id }) => {
         />
         <button className='px-8 py-2 bg-blue-500 hover:bg-blue-400 rounded-md text-white w-40 font-medium'>Save</button>
       </form>
-    </div>
+    </section>
   )
 }
 

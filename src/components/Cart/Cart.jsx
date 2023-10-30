@@ -34,37 +34,37 @@ export const Cart = () => {
   }
 
   return (
-    <div className="absolute bg-gray-50 shadow-2xl top-[81px] bottom-0 right-0 w-8/12 md:w-5/12 xl:w-3/12 z-5">
-      <div className="w-full px-6 py-5 h-full overflow-y-auto sticky">
+    <aside className="absolute bg-gray-50 shadow-2xl top-[81px] bottom-0 right-0 w-8/12 md:w-5/12 xl:w-3/12 z-5">
+      <section className="w-full px-6 py-5 h-full overflow-y-auto sticky">
         
         <CiCircleRemove onClick={handleCloseCart} className="absolute top-5 right-5 cursor-pointer" size={24} />
         
         <h2 className="flex justify-center text-2xl font-medium">Cart Items</h2>
-        <div className="flex flex-col gap-3 mt-10 w-full">
+        <section className="flex flex-col gap-3 mt-10 w-full">
           {
             products?.length === 0 
               ? ( <h1 className="font-medium text-lg">No products yet in the cart</h1>)
               : (
                 products?.map(product => (
-                  <div key={crypto.randomUUID()} className="flex gap-4 relative w-full">
+                  <article key={crypto.randomUUID()} className="flex gap-4 relative w-full">
                     <Link to={`${route.product.productDetail.path}/${product.id}`}>
                       <img 
                         src={`http://localhost:5000/images/` + product?.mainImg.split('___').splice(1)}
                         className="rounded-sm object-cover w-32" 
                       />
                     </Link>
-                    <div className="flex flex-col w-full">
-                      <div className="flex flex-row justify-between items-center mt-1">
-                        <span className="text-xl font-medium">{product.title}</span>
+                    <section className="flex flex-col w-full">
+                      <figure className="flex flex-row justify-between items-center mt-1">
+                        <figcaption className="text-xl font-medium">{product.title}</figcaption>
                         <BsFillTrashFill size={20} className="text-gray-400 hover:text-gray-300 cursor-pointer" onClick={() => removeFromCart(product?.secretId)} />
-                      </div>
+                      </figure>
 
                       <div className="flex flex-wrap justify-between gap-2 font-roboto font-medium text-gray-400 text-[13px] mt-1">
                         <span>{product?.category} - {product?.gender}</span>
                         <span>{product?.size}</span>
                       </div>
 
-                      <div className="flex flex-row justify-between gap-3 w-full mt-5">
+                      <section className="flex flex-row justify-between gap-3 w-full mt-5">
                         <select 
                           name='gender' 
                           value={product?.quantity}
@@ -78,13 +78,13 @@ export const Cart = () => {
                           }
                         </select>          
                         <span className="flex flex-row text-lg font-medium fonr-torobot">{getItemPriceQuantity(product?.quantity, product.price)} €</span>
-                      </div>
-                    </div>
-                  </div>
+                      </section>
+                    </section>
+                  </article>
                 ))
               )
           }
-        </div>
+        </section>
         
           <>
             <div className="flex flex-row justify-between mt-4 text-lg font-medium">
@@ -99,7 +99,7 @@ export const Cart = () => {
             Reset Cart
           </div>
         
-      </div>
-    </div>
+      </section>
+    </aside>
   )
 }

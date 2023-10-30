@@ -6,10 +6,10 @@ export const Layout = ({ children }) => {
     <div className="flex flex-col min-h-screen">
       <Navbar />
 
-      <div className="flex-1 mx-auto w-full justify-center">
+      <section className="flex-1 mx-auto w-full justify-center">
         {children}        
         <Footer/>
-      </div>
+      </section>
 
     </div>
   );

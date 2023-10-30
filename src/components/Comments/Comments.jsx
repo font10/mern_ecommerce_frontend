@@ -16,10 +16,10 @@ export const Comments = ({ id }) => {
   }, [id])
   
   return (
-    <div className="flex flex-col w-full">
+    <section className="flex flex-col w-full">
       <CreateComment id={id} />
       <CommentItem />
-    </div>
+    </section>
   )
 }
 

@@ -65,11 +65,11 @@ export const Create = () => {
   }
 
   return (
-    <div className="flex justify-center w-4/12 mx-auto mt-10">
-      <div className="flex flex-col p-10 shadow-xl rounded-sm w-full">
+    <main className="flex justify-center w-4/12 mx-auto mt-10">
+      <section className="flex flex-col p-10 shadow-xl rounded-sm w-full">
         
           <form onSubmit={handleCreateProduct} encType="multipart/form-data">            
-            <div className='flex flex-col w-full'>
+            <article className='flex flex-col w-full'>
               <label className='font-medium text-gray-700'>Title</label>
               <input 
                 type='text' 
@@ -79,8 +79,8 @@ export const Create = () => {
                 placeholder="Title"
                 onChange={(e) => { handleInputs(e) }}
               />
-            </div>
-            <div className='flex flex-col w-full'>
+            </article>
+            <article className='flex flex-col w-full'>
               <label className='font-medium text-gray-700'>Description</label>
               <textarea 
                 type='text' 
@@ -90,8 +90,8 @@ export const Create = () => {
                 placeholder="Description"
                 onChange={(e) => { handleInputs(e) }}
               />
-            </div>            
-            <div className='w-full'>
+            </article>            
+            <article className='w-full'>
               <label className='font-medium text-gray-700'>Category</label>
               <select 
                 name='category' 
@@ -105,8 +105,8 @@ export const Create = () => {
                   ))
                 }
               </select>
-            </div>
-            <div className='w-full mt-2'>
+            </article>
+            <article className='w-full mt-2'>
               <label className='font-medium text-gray-700'>Gender</label>
               <select 
                 name='gender' 
@@ -120,8 +120,8 @@ export const Create = () => {
                   ))
                 }
               </select>
-            </div>
-            <div className='flex flex-col w-full mt-3'>
+            </article>
+            <article className='flex flex-col w-full mt-3'>
               <label className='font-medium text-gray-700'>Price</label>
               <input 
                 type='price' 
@@ -131,8 +131,8 @@ export const Create = () => {
                 placeholder='29.99'
                 onChange={(e) => { handleInputs(e) }}
               />
-            </div>
-            <div className='flex flex-col w-full'>
+            </article>
+            <article className='flex flex-col w-full'>
               <label className='font-medium text-gray-700'>Stars</label>
               <input 
                 min={1}
@@ -145,8 +145,8 @@ export const Create = () => {
                 placeholder="1 to 5..."
                 onChange={(e) => { handleInputs(e) }}
               />
-            </div>
-            <div className='flex flex-row gap-3 mt-3'>
+            </article>
+            <article className='flex flex-row gap-3 mt-3'>
               <label className="labelFileInput" htmlFor="images"><span className='px-4 py-2 rounded-full bg-blue-400 text-white font-medium text-sm'>Upload here</span></label>
               <input 
                 type='file' 
@@ -159,10 +159,10 @@ export const Create = () => {
                 onChange={onChangeFileFirst}
               />
               { inputs.images && <p className="flex flex-row items-center gap-3 font-medium text-gray-800">{inputs.images.length} files selected <AiOutlineCloseCircle onClick={handleCloseImg} className={`closeIcon cursor-pointer`} /></p> }
-            </div>
+            </article>
             <button className='px-4 py-2 bg-blue-400 rounded-md text-white font-medium mt-6 w-full'>Save</button>
           </form>
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }

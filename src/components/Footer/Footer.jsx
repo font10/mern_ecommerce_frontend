@@ -2,16 +2,16 @@ import { AiOutlineInstagram, AiOutlineFacebook, AiOutlineTwitter } from '../../u
 
 export const Footer = () => {
   return (
-    <div className="bottom-0 left-0 w-full bg-gray-100 mt-10">
-      <div className="w-9/12 mx-auto flex items-center justify-center my-2 ">
-        <div className="flex flex-1 flex-col gap-3 p-5">
+    <footer className="bottom-0 left-0 w-full bg-gray-100 mt-10">
+      <section className="w-9/12 mx-auto flex items-center justify-center my-2 ">
+        <nav className="flex flex-1 flex-col gap-3 p-5">
           <h2 className='text-xl font-medium'>FAQ</h2>
           <span className='font-md text-gray-600'>What we sell</span>
           <span className='font-md text-gray-600'>How can you order</span>
           <span className='font-md text-gray-600'>What currency we accept</span>
           <span className='font-md text-gray-600'>Privacy Policy</span>
-        </div>
-        <div className="flex flex-1 flex-col gap-3 p-5">
+        </nav>
+        <section className="flex flex-1 flex-col gap-3 p-5">
           <h2 className='text-xl font-medium'>About</h2>
           <p className="max-w-[500px] text-justify">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis imperdiet velit. 
@@ -19,16 +19,16 @@ export const Footer = () => {
             Sed lobortis non erat in rhoncus. Etiam ac congue leo. Quisque fringilla eros sit 
             amet leo fermentum, vel aliquet nulla accumsan.
           </p>
-        </div>
-        <div className="flex flex-1 flex-col items-end h-full justify-start gap-3 p-5">
+        </section>
+        <section className="flex flex-1 flex-col items-end h-full justify-start gap-3 p-5">
           <h2 className='text-xl font-medium'>Contact</h2>
-          <div className="flex flex-wrap gap-2">
+          <aside className="flex flex-wrap gap-2">
             <AiOutlineInstagram size={28} />
             <AiOutlineFacebook size={28} />
             <AiOutlineTwitter size={28} />
-          </div>
-        </div>
-      </div>
-    </div>
+          </aside>
+        </section>
+      </section>
+    </footer>
   )
 }
