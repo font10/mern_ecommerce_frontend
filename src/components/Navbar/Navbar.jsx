@@ -23,12 +23,12 @@ export const Navbar = () => {
   }
   
   return (
-    <div className="px-0.5 py-1 h-20 w-full shadow-md">
-      <div className="flex items-center justify-between w-full xl:w-10/12 mx-auto h-full">
+    <header className="px-0.5 py-1 h-20 w-full shadow-md">
+      <nav className="flex items-center justify-between w-full xl:w-10/12 mx-auto h-full">
         <Link to={route.root.path} className="classes.left">
           <img src={logo} width={70} alt="profile pic" className="ml-5 xl:ml-0" />
         </Link>
-        <div className="flex items-center gap-4">
+        <section className="flex items-center gap-4">
           <Link to={route.product.create.path} className="classes.createBtn font-medium">
             Create
           </Link>
@@ -39,10 +39,10 @@ export const Navbar = () => {
           </div>
           <span className="text-gray-300">|</span>
           <UserNavMenu />
-        </div>
+        </section>
           
         { showCart && <Cart /> }
-      </div>
-    </div>
+      </nav>
+    </header>
   );
 };

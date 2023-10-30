@@ -39,8 +39,8 @@ export const Address = () => {
   }
 
   return (
-    <div className="flex justify-center w-2/12 items-center mx-auto">
-      <div className="flex flex-col mt-10 w-full">
+    <main className="flex justify-center w-2/12 items-center mx-auto">
+      <section className="flex flex-col mt-10 w-full">
         <h2 className="text-xl font-medium">Address and Details</h2>
         <form onSubmit={handleSubmit} className="flex flex-col mt-8 mb-4">
           <input
@@ -81,7 +81,7 @@ export const Address = () => {
           <button className="flex justify-center font-medium text-white px-4 py-2 rounded-md bg-cyan-600 my-5">Save</button>
         </form>
         { error && <span className='errorMsg'>All fields must be populated</span> }
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }

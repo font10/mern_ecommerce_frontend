@@ -10,23 +10,24 @@ export const CommentItem = () => {
   }
 
   return (
-    <div>
+    <section>
       {
         comments[0]?.map(comm => (
-          <div key={crypto.randomUUID()}>
-            <div className="flex flex-row items-center gap-3 mt-10">
+          <article key={crypto.randomUUID()}>
+            <figure className="flex flex-row items-center gap-3 mt-10">
               <img src={profile} width={35} alt="pic user" />
-              <span className="font-roboto font-medium">{comm?.userId?.username}</span>
-            </div>
+              <figcaption className="font-roboto font-medium">{comm?.userId?.username}</figcaption>
+            </figure>
             <div className="flex flex-row items-center mt-2">
-              {numToStars(comm?.rating)}<span className="ml-3 font-medium text-[17px]">{comm?.title}</span>
+              {numToStars(comm?.rating)}
+              <span className="ml-3 font-medium text-[17px]">{comm?.title}</span>
             </div>
-            <div className="text-sm font-medium text-gray-700 mt-0.5">Enviado el {formatDate(comm?.createdAt)}</div>
-            <div className="mt-3">{comm?.comment}</div>
-          </div>
+            <p className="text-sm font-medium text-gray-700 mt-0.5">Enviado el {formatDate(comm?.createdAt)}</p>
+            <p className="mt-3">{comm?.comment}</p>
+          </article>
         ))
       }
-    </div>
+    </section>
   )
 }
 
