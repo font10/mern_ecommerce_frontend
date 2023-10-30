@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom';
 export const CommentItem = () => {
   const { id } = useParams()
   const { data } = useGetCommentsByProductQuery(id)
-
   const formatDate = (data) => { return new Date(data).toLocaleDateString() }
 
   return (

@@ -41,8 +41,8 @@ export const Navbar = () => {
           <UserNavMenu />
         </section>
           
-        { showCart && <Cart /> }
       </nav>
+      { showCart && <Cart /> }
     </header>
   );
 };
