@@ -1,12 +1,10 @@
-import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
-import { route } from "../../models/route.model"
+//import { useSelector } from "react-redux"
 import { Address } from "../../pages/index"
 import { Payment } from "../../components"
 
 export const Checkout = () => {
-  const { address } = useSelector(state => state.address)
-  const { products } = useSelector(state => state.cart)
+  //const { address } = useSelector(state => state.address)
+  /*const { products } = useSelector(state => state.cart)
 
   const totalPriceProducts = () => {
     let totalPrice = 0
@@ -16,18 +14,18 @@ export const Checkout = () => {
 
   const getItemPriceQuantity = (quantity, price) => {
     return quantity * price
-  }
+  }*/
 
   return (
-    <body className="flex flex-row w-8/12 mx-auto mt-20 gap-3">
-      <section className="bg-blue-100 w-8/12 h-full p-8">
+    <div className="flex flex-row w-8/12 mx-auto mt-20 gap-3">
+      <section className="w-8/12 h-full p-8">
         <Address />
         <Payment />
       </section>
       <section className="bg-red-100 w-4/12 h-full">
         Cart
       </section>
-    </body>
+    </div>
   )
 }
 

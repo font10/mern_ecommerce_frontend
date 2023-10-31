@@ -1,3 +1,6 @@
+import { AddressItem } from './Address/AddressItem'
+import { CreateAddress } from './Address/CreateAddress'
+import { EditAddress } from './Address/EditAddress'
 import { Cart } from './Cart/Cart'
 import { CartItem } from './Cart/CartItem'
 import { CreateComment } from './Comments/Create//CreateComment'
@@ -11,11 +14,14 @@ import { ModalFilter } from './ModalFilter/ModalFilter'
 import { Navbar } from './Navbar/Navbar'
 import { Payment } from './Payment/Payment'
 
-export { 
+export {
+  AddressItem,
   Cart,
   CartItem,
+  CreateAddress,
   CreateComment,
   Comments,
+  EditAddress,
   Footer,
   GalleryProduct,
   Hero,

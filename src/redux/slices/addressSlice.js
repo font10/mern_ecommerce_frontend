@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  address: {}
+  address: {},
+  isEdit: false,
 }
 
 export const addressSlice = createSlice({
@@ -13,10 +14,16 @@ export const addressSlice = createSlice({
     },
     emptyAddres(state) {
       state.address = {}
+    },
+    isEditToTrue(state) {
+      state.isEdit = true
+    },
+    isEditToFalse(state) {
+      state.isEdit = false
     }
   }
 })
 
-export const { submitAddress } = addressSlice.actions
+export const { submitAddress, isEditToTrue, isEditToFalse } = addressSlice.actions
 
 export default addressSlice.reducer
