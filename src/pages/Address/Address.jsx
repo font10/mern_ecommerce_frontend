@@ -39,7 +39,7 @@ export const Address = () => {
   }
 
   return (
-    <main className="flex justify-center w-2/12 items-center mx-auto">
+    <main className="flex justify-center w-full items-center mx-auto">
       <section className="flex flex-col mt-10 w-full">
         <h2 className="text-xl font-medium">Address and Details</h2>
         <form onSubmit={handleSubmit} className="flex flex-col mt-8 mb-4">

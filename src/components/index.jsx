@@ -9,6 +9,7 @@ import { Layout } from './Layout/Layout'
 import { List } from './List/List'
 import { ModalFilter } from './ModalFilter/ModalFilter'
 import { Navbar } from './Navbar/Navbar'
+import { Payment } from './Payment/Payment'
 
 export { 
   Cart,
@@ -22,4 +23,5 @@ export {
   List,
   ModalFilter,
   Navbar,
+  Payment
 }

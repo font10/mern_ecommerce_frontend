@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { route } from "../../models/route.model"
+import { Address } from "../../pages/index"
+import { Payment } from "../../components"
 
 export const Checkout = () => {
   const { address } = useSelector(state => state.address)
@@ -17,8 +19,20 @@ export const Checkout = () => {
   }
 
   return (
-    <div className="w-6/12 mx-auto mt-20">
-      <div className="flex justify-content gap-10 w-full h-full">
+    <body className="flex flex-row w-8/12 mx-auto mt-20 gap-3">
+      <section className="bg-blue-100 w-8/12 h-full p-8">
+        <Address />
+        <Payment />
+      </section>
+      <section className="bg-red-100 w-4/12 h-full">
+        Cart
+      </section>
+    </body>
+  )
+}
+
+/*
+<div className="flex justify-content gap-10 w-full h-full">
         <div className="flex flex-col items-start ml-8">
           <h1 className="text-2xl font-medium">Address Data</h1>
           <div className="">
@@ -65,6 +79,4 @@ export const Checkout = () => {
           <Link to={route.final.path} className="flex justify-center w-3/12 px-4 py-2 bg-cyan-600 text-white font-medium mt-5 rounded-md">Order</Link>
         </div>
       </div>
-    </div>
-  )
-}
+*/
