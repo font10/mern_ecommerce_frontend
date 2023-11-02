@@ -1,4 +1,5 @@
 import { AddressItem } from './Address/AddressItem'
+import { AddressList } from './Address/AddressList'
 import { CreateAddress } from './Address/CreateAddress'
 import { EditAddress } from './Address/EditAddress'
 import { Cart } from './Cart/Cart'
@@ -15,6 +16,7 @@ import { Navbar } from './Navbar/Navbar'
 import { Payment } from './Payment/Payment'
 
 export {
+  AddressList,
   AddressItem,
   Cart,
   CartItem,

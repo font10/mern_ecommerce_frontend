@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   address: {},
-  isEdit: false,
+  idEdit: '',
+  modalForm: false
 }
 
 export const addressSlice = createSlice({
@@ -10,20 +11,25 @@ export const addressSlice = createSlice({
   initialState,
   reducers: {
     submitAddress(state, action){
+      console.log(action.payload)
       state.address = action.payload
     },
-    emptyAddres(state) {
+    emptyAddress(state) {
       state.address = {}
     },
-    isEditToTrue(state) {
-      state.isEdit = true
+    idToEdit(state, action) {
+      console.log(action.payload)
+      state.idEdit = action.payload
     },
-    isEditToFalse(state) {
-      state.isEdit = false
-    }
+    modalFormToTrue(state) {
+      state.modalForm = true
+    },
+    modalFormToFalse(state) {
+      state.modalForm = false
+    },
   }
 })
 
-export const { submitAddress, isEditToTrue, isEditToFalse } = addressSlice.actions
+export const { submitAddress, idToEdit, modalFormToTrue, modalFormToFalse } = addressSlice.actions
 
 export default addressSlice.reducer

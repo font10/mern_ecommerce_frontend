@@ -17,6 +17,11 @@ export const addressesApi = createApi({
     method: 'GET',
     providesTags: ["Addresses"],
   }),
+  getAddressById: builder.query({
+    query: (id) => `/address/edit/${id}`,
+    method: 'GET',
+    providesTags: ["AddressId"],
+  }),
   createAddress: builder.mutation({
     query: ({ token, ...newAddress }) => ({
       url: '/address',
@@ -56,6 +61,9 @@ export const addressesApi = createApi({
     const patchResult = dispatch(
       addressesApi.util.updateQueryData('getAddresesByUser', id, (draft) => {
         Object.assign(draft, rest)
+      }),
+      addressesApi.util.updateQueryData('getAddressById', id, (draft) => {
+        Object.assign(draft, rest)
       })
     )
     try {
@@ -67,7 +75,7 @@ export const addressesApi = createApi({
  })
 })
 
-export const { useGetAddresesByUserQuery, useCreateAddressMutation, useEditAddressMutation, useDeleteAddressMutation } = addressesApi
+export const { useGetAddresesByUserQuery, useGetAddressByIdQuery, useCreateAddressMutation, useEditAddressMutation, useDeleteAddressMutation } = addressesApi
 /*
  async onQueryStarted({ id, ...rest }, { dispatch, queryFulfilled }) {
     const patchResult = dispatch(

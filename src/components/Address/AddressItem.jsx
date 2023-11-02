@@ -1,17 +1,15 @@
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { useDeleteAddressMutation } from "../../services/addressesApi";
-import { isEditToTrue, submitAddress } from '../../redux/slices/addressSlice'
+import { idToEdit, modalFormToTrue } from '../../redux/slices/addressSlice'
 
 export const AddressItem = ({ address }) => {
   const dispatch = useDispatch()
   const { token } = useSelector(state => state.auth)
-  const [deleteAddress, { isSuccess }] = useDeleteAddressMutation()
-
-  if(isSuccess) console.log('Success')
+  const [deleteAddress] = useDeleteAddressMutation()
 
   return (
-    <li className="border-2 border-gray-200 p-5 rounded-md my-2">      
+    <div className="border-2 border-gray-200 p-5 rounded-md my-2">      
       <address className="flex flex-row gap-3 items-center justify-between">
         <section className="flex flex-row gap-5 items-center">
           <input defaultChecked={address.addressDefault === true} id="default-radio-2" type="radio" value="" name="default-radio" 
@@ -21,11 +19,11 @@ export const AddressItem = ({ address }) => {
           <span className="font-roboto text-md text-gray-400 ml-2">{address.streetAddressAndNumber}</span>
         </section>
         <section className="flex flex-row gap-3 items-center">
-          <span className="font-roboto font-medium text-md text-blue-400 cursor-pointer" onClick={() => { dispatch(isEditToTrue()); dispatch(submitAddress(address)) }}>Edit</span> 
+          <span className="font-roboto font-medium text-md text-blue-400 cursor-pointer" onClick={() => { dispatch(idToEdit(address._id)); dispatch(modalFormToTrue()) }}>Edit</span> 
           <span className="font-roboto font-medium text-md text-blue-400 cursor-pointer" onClick={() => deleteAddress({ token, id: address._id })}>Delete</span>
         </section>
       </address>
-    </li>
+    </div>
   )
 }
 

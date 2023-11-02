@@ -1,20 +1,31 @@
-import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useGetCountriesQuery } from "../../services/externalApi"
-import { useEditAddressMutation } from "../../services/addressesApi"
+import { useGetAddressByIdQuery, useEditAddressMutation } from "../../services/addressesApi"
+import { EditForm } from "./EditForm"
+import { useEffect, useState } from "react"
 
 export const EditAddress = () => {
-  const { user, token } = useSelector(state => state.auth)
-  const { address } = useSelector(state => state.address)
+  //const { user, token } = useSelector(state => state.auth)
+  const { idEdit } = useSelector(state => state.address)
   const { data: countries, isError, isLoading, error } = useGetCountriesQuery()
+  const { data: address } = useGetAddressByIdQuery(idEdit)
   const [ updateAddress ] = useEditAddressMutation()
-  const [inputs, setInputs] = useState(address)
+  const { user, token } = useSelector(state => state.auth)
+  const [inputs, setInputs] = useState({
+    firstName: address?.address.firstName,
+    lastName: address?.address.lastName,
+    streetAddressAndNumber: address?.address.streetAddressAndNumber,
+    additionalData: address?.address.additionalData,
+    phoneNumber: address?.address.phoneNumber,
+    country: address?.address.country,
+    city: address?.address.city,
+    zipCode: address?.address.zipCode,
+  })
 
-  if(isLoading) return <div>Loading...</div>
-  else if(isError) return <div>Error: {error}</div>
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
     const firstName = e.target.elements.firstName.value.trim()
     const lastName = e.target.elements.lastName.value.trim()
     const streetAddressAndNumber = e.target.elements.streetAddressAndNumber.value.trim()
@@ -25,42 +36,48 @@ export const EditAddress = () => {
     const zipCode = e.target.elements.zipCode.value.trim()
 
     const newAddress = {
-      _id: address?._id,
+      _id: address?.address._id,
       userId: user?._id,
-      firstName, 
-      lastName, 
-      streetAddressAndNumber, 
-      additionalData, 
-      phoneNumber, 
-      country, 
-      city, 
-      zipCode, 
+      firstName: firstName, 
+      lastName: lastName, 
+      streetAddressAndNumber: streetAddressAndNumber, 
+      additionalData: additionalData, 
+      phoneNumber: phoneNumber,
+      country: country,
+      city: city,
+      zipCode: zipCode,
     }
 
-    console.log(newAddress._id)
+    console.log(newAddress)
     updateAddress({ token, newAddress })
   }
 
   const handleInputs = (e) => {
     const { name, value } = e.target
-    setInputs({...inputs, [name]: value })
+    setInputs({ ...inputs, [name]: value })
   }
+
+  console.log(inputs)
+
+  if(isLoading) return <div>Loading...</div>
+  else if(isError) return <div>Error: {error}</div>
 
   return (
     <section>
-      <form onSubmit={handleSubmit} className="flex flex-col w-full mt-8 mb-4">
+       <form onSubmit={handleSubmit} className="flex flex-col w-full mt-8 mb-4">
         <fieldset className="border border border-blue-400 p-5 rounded-md px-7">
           <legend className="font-medium font-roboto px-2 text-gray-700">Edit Address</legend>
+          
           <section className="flex flex-row gap-5 items-center w-full">
             <label htmlFor="firstName" className="w-full">
               <span className="text-sm font-medium text-gray-600">First name</span>
               <input
                 type='text'
                 name='firstName'
-                value={inputs.firstName}
+                defaultValue={inputs.firstName}
                 placeholder="First Name" 
-                className="px-4 py-2 border border-gray-200 w-full rounded-md mb-3"           
-                onChange={handleInputs}
+                className="px-4 py-2 border border-gray-200 w-full rounded-md mb-3"   
+                
                 />
             </label>
             <label htmlFor="lastName" className="w-full">
@@ -68,10 +85,10 @@ export const EditAddress = () => {
               <input
                 type='text'
                 name='lastName'
-                value={inputs.lastName}
+                defaultValue={inputs.lastName}
                 placeholder="Last Name"
                 className="px-4 py-2 border border-gray-200 w-full rounded-md px-5 mb-3"
-              onChange={handleInputs}
+              
               />
             </label>           
           </section>
@@ -81,10 +98,10 @@ export const EditAddress = () => {
               <input
                 type='text'
                 name='streetAddressAndNumber'
-                value={inputs.streetAddressAndNumber}
+                defaultValue={inputs.streetAddressAndNumber}
                 placeholder="Street Address And Number"
                 className="px-4 py-2 border border-gray-200 rounded-md px-5"
-              onChange={handleInputs}
+              
               />
               <small className="text-gray-500 text-xs mt-1 ml-1">Ex. 936 5th Ave, New York</small>
             </label>
@@ -93,10 +110,10 @@ export const EditAddress = () => {
               <input
                 type='text'
                 name='additionalData'
-                value={inputs.additionalData}
+                defaultValue={inputs.additionalData}
                 placeholder="Additional data(flat, door...)"
                 className="px-4 py-2 border border-gray-200 rounded-md px-5"
-              onChange={handleInputs}
+                
               />
               <small className="text-gray-500 text-xs mt-1 ml-1">Ex. Flat 4, Door 2</small>
             </label> 
@@ -108,18 +125,18 @@ export const EditAddress = () => {
               <input
                 type="tel"
                 placeholder="656898542"
-                value={inputs.phoneNumber}
+                defaultValue={inputs.phoneNumber}
                 name='phoneNumber'
                 maxLength={9}
                 className="py-2 border border-gray-200 px-5 rounded-md focus:outline-none"
-              onChange={handleInputs}
+                
               />
             </label>
             <label htmlFor="city" className=" flex flex-col w-full">
               <span className="text-sm font-medium text-gray-600">Country</span>
               <select 
                 name='country' 
-                value={inputs.country} 
+                defaultValue={inputs.country} 
                 className='py-2 border border-gray-200 px-5 rounded-md w-full focus:outline-none'
               >
                 {
@@ -136,10 +153,10 @@ export const EditAddress = () => {
               <input
                 type='text'
                 name='city'
-                value={inputs.city}
+                defaultValue={inputs.city}
                 placeholder="New York"
                 className="px-4 py-2 border border-gray-200 rounded-md px-5 focus:outline-none"
-              onChange={handleInputs}
+                
               />
             </label>
             <label htmlFor="zipCode" className=" flex flex-col w-full">
@@ -147,19 +164,16 @@ export const EditAddress = () => {
               <input
                 type='text'
                 name='zipCode'
-                value={inputs.zipCode}
+                defaultValue={inputs.zipCode}
                 pattern="[0-9]{5}"
                 placeholder="17384"
                 className="px-4 py-2 border border-gray-200 rounded-md px-5 focus:outline-none"
-              onChange={handleInputs}
               />
             </label> 
           </section>
-         
           <button className="flex justify-center font-medium text-white px-6 py-2 rounded-md bg-blue-500 my-5">Update</button>
         </fieldset>
       </form>
-      
     </section>
   )
 }
