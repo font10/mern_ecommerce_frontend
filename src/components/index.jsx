@@ -14,6 +14,8 @@ import { List } from './List/List'
 import { ModalFilter } from './ModalFilter/ModalFilter'
 import { Navbar } from './Navbar/Navbar'
 import { Payment } from './Payment/Payment'
+import { ProfileLayout } from './Profile/ProfileLayout'
+import { ProfileUserForm } from './Profile/ProfileUserForm'
 
 export {
   AddressList,
@@ -31,5 +33,7 @@ export {
   List,
   ModalFilter,
   Navbar,
-  Payment
+  Payment,
+  ProfileLayout,
+  ProfileUserForm
 }

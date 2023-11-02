@@ -1,11 +1,8 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { useGetCountriesQuery } from "../../services/externalApi"
 import { useCreateAddressMutation } from "../../services/addressesApi"
-import { AiOutlineCloseCircle } from '../../utils/icons'
-import { modalFormToFalse } from "../../redux/slices/addressSlice"
 
 export const CreateAddress = () => {
-  const dispatch = useDispatch()
   const { user, token } = useSelector(state => state.auth)
   const { data: countries, isError, isLoading, error } = useGetCountriesQuery()
   const [ createAddress ] = useCreateAddressMutation()
@@ -24,6 +21,7 @@ export const CreateAddress = () => {
     const country = e.target.elements.country.value.trim()
     const city = e.target.elements.city.value.trim()
     const zipCode = e.target.elements.zipCode.value.trim()
+    const addressDefault = e.target.elements.addressDefault.checked
 
     const newAddress = {
       userId: user?._id,
@@ -34,7 +32,8 @@ export const CreateAddress = () => {
       phoneNumber, 
       country, 
       city, 
-      zipCode, 
+      zipCode,
+      addressDefault
     }
 
     console.log(newAddress)
@@ -141,6 +140,8 @@ export const CreateAddress = () => {
               />
             </label> 
           </section>
+
+          <input type="checkbox" name='addressDefault' className="mt-5" /> <span className="text-sm font-medium text-gray-600">Default Address</span>
          
           <button className="flex justify-center font-medium text-white px-6 py-2 rounded-md bg-blue-500 my-5">Add</button>
         </fieldset>

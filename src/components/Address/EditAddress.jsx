@@ -1,8 +1,6 @@
 import { useSelector } from "react-redux"
 import { useGetCountriesQuery } from "../../services/externalApi"
 import { useGetAddressByIdQuery, useEditAddressMutation } from "../../services/addressesApi"
-import { EditForm } from "./EditForm"
-import { useEffect, useState } from "react"
 
 export const EditAddress = () => {
   //const { user, token } = useSelector(state => state.auth)
@@ -11,17 +9,6 @@ export const EditAddress = () => {
   const { data: address } = useGetAddressByIdQuery(idEdit)
   const [ updateAddress ] = useEditAddressMutation()
   const { user, token } = useSelector(state => state.auth)
-  const [inputs, setInputs] = useState({
-    firstName: address?.address.firstName,
-    lastName: address?.address.lastName,
-    streetAddressAndNumber: address?.address.streetAddressAndNumber,
-    additionalData: address?.address.additionalData,
-    phoneNumber: address?.address.phoneNumber,
-    country: address?.address.country,
-    city: address?.address.city,
-    zipCode: address?.address.zipCode,
-  })
-
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -52,13 +39,6 @@ export const EditAddress = () => {
     updateAddress({ token, newAddress })
   }
 
-  const handleInputs = (e) => {
-    const { name, value } = e.target
-    setInputs({ ...inputs, [name]: value })
-  }
-
-  console.log(inputs)
-
   if(isLoading) return <div>Loading...</div>
   else if(isError) return <div>Error: {error}</div>
 
@@ -74,7 +54,7 @@ export const EditAddress = () => {
               <input
                 type='text'
                 name='firstName'
-                defaultValue={inputs.firstName}
+                defaultValue={address?.address.firstName}
                 placeholder="First Name" 
                 className="px-4 py-2 border border-gray-200 w-full rounded-md mb-3"   
                 
@@ -85,7 +65,7 @@ export const EditAddress = () => {
               <input
                 type='text'
                 name='lastName'
-                defaultValue={inputs.lastName}
+                defaultValue={address?.address.lastName}
                 placeholder="Last Name"
                 className="px-4 py-2 border border-gray-200 w-full rounded-md px-5 mb-3"
               
@@ -98,7 +78,7 @@ export const EditAddress = () => {
               <input
                 type='text'
                 name='streetAddressAndNumber'
-                defaultValue={inputs.streetAddressAndNumber}
+                defaultValue={address?.address.streetAddressAndNumber}
                 placeholder="Street Address And Number"
                 className="px-4 py-2 border border-gray-200 rounded-md px-5"
               
@@ -110,7 +90,7 @@ export const EditAddress = () => {
               <input
                 type='text'
                 name='additionalData'
-                defaultValue={inputs.additionalData}
+                defaultValue={address?.address.additionalData}
                 placeholder="Additional data(flat, door...)"
                 className="px-4 py-2 border border-gray-200 rounded-md px-5"
                 
@@ -125,7 +105,7 @@ export const EditAddress = () => {
               <input
                 type="tel"
                 placeholder="656898542"
-                defaultValue={inputs.phoneNumber}
+                defaultValue={address?.address.phoneNumber}
                 name='phoneNumber'
                 maxLength={9}
                 className="py-2 border border-gray-200 px-5 rounded-md focus:outline-none"
@@ -136,7 +116,7 @@ export const EditAddress = () => {
               <span className="text-sm font-medium text-gray-600">Country</span>
               <select 
                 name='country' 
-                defaultValue={inputs.country} 
+                defaultValue={address?.address.country} 
                 className='py-2 border border-gray-200 px-5 rounded-md w-full focus:outline-none'
               >
                 {
@@ -153,7 +133,7 @@ export const EditAddress = () => {
               <input
                 type='text'
                 name='city'
-                defaultValue={inputs.city}
+                defaultValue={address?.address.city}
                 placeholder="New York"
                 className="px-4 py-2 border border-gray-200 rounded-md px-5 focus:outline-none"
                 
@@ -164,13 +144,15 @@ export const EditAddress = () => {
               <input
                 type='text'
                 name='zipCode'
-                defaultValue={inputs.zipCode}
+                defaultValue={address?.address.zipCode}
                 pattern="[0-9]{5}"
                 placeholder="17384"
                 className="px-4 py-2 border border-gray-200 rounded-md px-5 focus:outline-none"
               />
             </label> 
           </section>
+          
+          <input type="checkbox" name='addressDefault' defaultChecked={address?.address.addressDefault} className="mt-5" /> <span className="text-sm font-medium text-gray-600">Default Address</span>
           <button className="flex justify-center font-medium text-white px-6 py-2 rounded-md bg-blue-500 my-5">Update</button>
         </fieldset>
       </form>
