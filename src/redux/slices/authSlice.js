@@ -23,10 +23,17 @@ export const authSlice = createSlice({
       state.user = null
       state.token = null
       localStorage.clear()
+    },
+    changeInfoUser(state, action) {
+      const { firstName, lastName, username, birthdate } = action.payload
+      state.user.firstName = firstName
+      state.user.lastName = lastName
+      state.user.username = username
+      state.user.birthdate = birthdate
     }
   }
 })
 
-export const { login, register, logout } = authSlice.actions
+export const { login, register, logout, changeInfoUser } = authSlice.actions
 
 export default authSlice.reducer

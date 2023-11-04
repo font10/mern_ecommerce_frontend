@@ -1,5 +1,5 @@
 import { CgProfile, MdLogout } from './icons'
-import { applepay, credit, googlepay, paypal } from '../assets/images/index'
+import { applepay, account_manager, orders, credit, googlepay, paypal } from '../assets/images/index'
 import { route } from '../models/route.model' 
 
 export const categories = ['Lifestyle', 'Jordan', 'Running', 'Baloncesto', 'Fútbol', 'Gym y training', 'Skateboard', 'Golf', 'Tenis']
@@ -13,6 +13,12 @@ export const menuModalUser = [
   { name: "Profile", icon: <CgProfile size={22} />, path: route.profile.path },
   { name: "Logout", icon: <MdLogout size={22} className="text-red-600" />, path: route.root.path },
 ];
+
+export const profileTabs = [
+  { id: 1, name: 'account', title: 'Account', img: account_manager },
+  { id: 2, name: 'orders', title: 'Orders', img: orders },
+  { id: 3, name: 'comments', title: 'Comments', img: account_manager },
+]
 
 export const payments = [
   { name: 'Credit or Debit Card', icon: credit, active: true },

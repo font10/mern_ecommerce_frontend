@@ -6,6 +6,7 @@ import { Cart } from './Cart/Cart'
 import { CartItem } from './Cart/CartItem'
 import { CreateComment } from './Comments/Create//CreateComment'
 import { Comments } from './Comments/Comments'
+import { CommentsProfile } from './Comments/Profile/CommentsProfile'
 import { Footer } from './Footer/Footer'
 import { GalleryProduct } from './GalleryProduct/GalleryProduct'
 import { Hero } from './Hero/Hero'
@@ -13,8 +14,13 @@ import { Layout } from './Layout/Layout'
 import { List } from './List/List'
 import { ModalFilter } from './ModalFilter/ModalFilter'
 import { Navbar } from './Navbar/Navbar'
+import { OrdersList } from './Orders/OrdersList'
+import { NoOrders } from './Orders/NoOrders'
+import { OrderCard } from './Orders/OrderCard'
 import { Payment } from './Payment/Payment'
+import { ProfileChangePasswordForm } from './Profile/ProfileChangePasswordForm'
 import { ProfileLayout } from './Profile/ProfileLayout'
+import { ProfileChangePersonalInfo } from './Profile/ProfileChangePersonalInfo'
 import { ProfileUserForm } from './Profile/ProfileUserForm'
 
 export {
@@ -25,6 +31,7 @@ export {
   CreateAddress,
   CreateComment,
   Comments,
+  CommentsProfile,
   EditAddress,
   Footer,
   GalleryProduct,
@@ -33,7 +40,12 @@ export {
   List,
   ModalFilter,
   Navbar,
+  NoOrders,
+  OrderCard,
+  OrdersList,
   Payment,
+  ProfileChangePasswordForm,
   ProfileLayout,
+  ProfileChangePersonalInfo,
   ProfileUserForm
 }

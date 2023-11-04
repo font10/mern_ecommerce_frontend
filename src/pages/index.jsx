@@ -7,6 +7,7 @@ import { FilterMenu } from './Product/Filter/FilterMenu/FilterMenu'
 import { Final } from './Final/Final'
 import { Home } from './Home/Home'
 import { Login } from './Auth/Login/Login'
+import { Orders } from './Orders/Orders'
 import { ProductsFilter } from './Product/Filter/ProductsFilter'
 import { ProfileLayout } from '../components/Profile/ProfileLayout'
 import { Profile } from './Profile/Profile'
@@ -22,6 +23,7 @@ export {
   Final,
   Home,
   Login,
+  Orders,
   ProductsFilter,
   Profile,
   ProfileLayout,

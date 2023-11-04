@@ -8,8 +8,9 @@ export const Layout = ({ children }) => {
 
       <section className="flex-1 mx-auto w-full justify-center">
         {children}        
-        <Footer/>
       </section>
+      
+      <Footer/>
 
     </div>
   );
