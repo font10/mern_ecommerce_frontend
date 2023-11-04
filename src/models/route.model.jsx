@@ -27,6 +27,10 @@ export const route = {
     title: 'Final',
     path: '/final',
   },
+  profile: {
+    title: 'Profile',
+    path: '/profile',
+  },
   product: {
     create: {
       title: 'Create Product',

@@ -15,7 +15,12 @@ export const commentApi = createApi({
   getCommentsByProduct: builder.query({
     query: (id) => `/comment/${id}`,
     method: 'GET',
-    providesTags: ["Comments"],
+    providesTags: ['Comments'],
+  }),
+  getCommentsByUser: builder.query({
+    query: (id) => `/comment/user/${id}`,
+    method: 'GET',
+    providesTags: ['CommentsByUser'],
   }),
   createComment: builder.mutation({
     query: ({token, ...newComment}) => ({
@@ -29,7 +34,30 @@ export const commentApi = createApi({
     }),
     invalidatesTags: ['Comments']
   }),
+  deleteComment: builder.mutation({
+    query: ({ id, token }) => ({
+      url: `/comment/${id}`,
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    }),
+    invalidatesTags: ['CommentsByUser']
+  }),
+  async onQueryStarted({ id, ...rest }, { dispatch, queryFulfilled }) {
+    const patchResult = dispatch(
+      commentApi.util.updateQueryData('getCommentsByUser', id, (draft) => {
+        Object.assign(draft, rest)
+      })
+    )
+    try {
+      await queryFulfilled
+    } catch {
+      patchResult.undo()
+    }
+  },
  })
 })
 
-export const { useGetCommentsByProductQuery, useCreateCommentMutation } = commentApi
+export const { useGetCommentsByProductQuery, useGetCommentsByUserQuery, useCreateCommentMutation, useDeleteCommentMutation } = commentApi
