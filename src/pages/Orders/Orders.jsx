@@ -4,12 +4,11 @@ import { OrdersList } from "../../components"
 
 export const Orders = () => {
   const { user } = useSelector(state => state.auth)
-  const { data: orders } = useGetOrdersByUserQuery(user._id)
-  console.log(orders)
+  const { data: orders = [] } = useGetOrdersByUserQuery(user._id)
   
   return (
     <div className="w-full">
-      <OrdersList orders={orders.orders} />
+      <OrdersList orders={orders?.orders || []} />
     </div>
   )
 }

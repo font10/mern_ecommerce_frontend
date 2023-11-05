@@ -4,7 +4,7 @@ import { NoOrders, OrderCard } from "../index";
 export const OrdersList = ( orders ) => {
   
   return (
-    <section className="flex flex-col justify-center items-center mt-5 w-full lg:min-w-[650px]">
+    <section className="flex flex-col justify-center items-center mt-5 w-full">
       <article className="flex flex-col gap-5 mt-10">
         { 
           orders?.orders?.length === 0

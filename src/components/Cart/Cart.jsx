@@ -12,8 +12,8 @@ export const Cart = () => {
   const handleCloseCart = () => dispatch(toggleShowCart())
 
   return (
-    <aside className="absolute bg-gray-50 shadow-2xl top-[82px] h-screen right-0 w-8/12 md:w-5/12 xl:w-3/12 z-20" style={{ height: '100vh'}}>
-      <section className="w-full px-6 py-5 h-full overflow-y-auto">
+    <aside className="block fixed bg-gray-50 shadow-2xl top-0 h-screen right-0 w-8/12 md:w-5/12 xl:w-3/12 z-20" >
+      <section className="w-full px-6 py-5 h-full">
         
         <CiCircleRemove onClick={handleCloseCart} className="absolute top-5 right-5 cursor-pointer" size={24} />
         
@@ -34,7 +34,7 @@ export const Cart = () => {
         
         <section>
           <div className="flex flex-row justify-between mt-4 text-lg font-medium">
-            <h3>Subtotal</h3>
+            <h3>Total</h3>
             <p>{Number(total).toFixed(2)} €</p>
           </div> 
           <Link to={route.checkout.path} onClick={handleCloseCart} className="flex justify-center font-medium text-white px-4 py-2 rounded-md bg-cyan-600 my-5">Proceed to checkout</Link>

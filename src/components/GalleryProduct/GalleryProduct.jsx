@@ -18,8 +18,7 @@ export const GalleryProduct = ({ product }) => {
                   `http://localhost:5000/images/` + img.split('___').splice(1) === currentImage ? '' : <img 
                     src={`http://localhost:5000/images/` + product?.images[i].split('___').splice(1)} 
                     alt="" 
-                    width={196}
-                    className='cursor-pointer h-24 object-cover' 
+                    className='cursor-pointer h-24 w-40 object-cover' 
                     onClick={() => setCurrentImage(`http://localhost:5000/images/` + product?.images[i].split('___').splice(1))}
                   />
                 }

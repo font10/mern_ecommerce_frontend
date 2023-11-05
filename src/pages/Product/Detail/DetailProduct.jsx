@@ -65,7 +65,8 @@ export const DetailProduct = ({ product }) => {
             <article 
               key={item} 
               value={sizeProduct} 
-              className={`${ sizeProduct === item ? 'border-2 border-blue-300 bg-blue-300 bg-opacity-50' : 'border border-gray-200 hover:bg-gray-100' } flex items-center justify-center px-4 py-2 font-medium text-gray-600 font-roboto text-[16px] rounded-md  cursor-pointer`}
+              className={`${ sizeProduct === item ? 'border-2 border-blue-300 bg-blue-300 bg-opacity-50' : 'border border-gray-200 hover:bg-gray-100' } 
+                flex items-center justify-center px-4 py-2 font-medium text-gray-600 font-roboto text-[13px] 2xl:text-[16px] rounded-md  cursor-pointer`}
               onClick={() => setSizeProduct(item)}
             >
               {item}

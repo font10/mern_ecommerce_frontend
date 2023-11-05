@@ -30,10 +30,10 @@ export const ProfileChangePersonalInfo = () => {
 
   return (
     <section>
-      <form onSubmit={handleSubmit} className="flex flex-col w-full mt-5 mb-4">
+      <form onSubmit={handleSubmit} className="flex flex-col items-center w-full mt-5 mb-4">
         <fieldset className="border border border-blue-400 p-5 rounded-md px-7">
           <legend className="font-medium font-roboto px-2 text-gray-700">Personal Info</legend>
-          <section className="flex flex-col lg:flex-row gap-5 items-center w-full">
+          <section className="flex flex-col md:flex-row gap-5 items-center w-full">
             <label htmlFor="firstName" className="w-full">
               <span className="text-sm font-medium text-gray-600">First name</span>
               <input

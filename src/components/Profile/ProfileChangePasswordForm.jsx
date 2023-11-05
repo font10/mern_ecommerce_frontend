@@ -27,11 +27,11 @@ export const ProfileChangePasswordForm = () => {
 
   return (
     <section>
-        <form onSubmit={handleSubmit} className="flex flex-col w-full mt-8 mb-4">
-          <fieldset className="border border border-blue-400 p-5 rounded-md px-7">
+        <form onSubmit={handleSubmit} className="flex flex-col items-center w-full mt-8 mb-4">
+          <fieldset className="border border border-blue-400 p-5 rounded-md px-7 w-full">
             <legend className="font-medium font-roboto px-2 text-gray-700">Change password</legend>        
 
-            <section className="flex flex-row gap-5 items-center mt-3 w-full ">
+            <section className="flex flex-col md:flex-row gap-5 items-center mt-3 w-full ">
               <label htmlFor="city" className=" flex flex-col w-full">
                 <span className="text-sm font-medium text-gray-600">New password</span>
                 <input

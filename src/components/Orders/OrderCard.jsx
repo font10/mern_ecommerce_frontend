@@ -18,7 +18,7 @@ export const OrderCard = ({ order }) => {
   }
   
   return (
-    <section className="bg-white rounded-md w-[900px]">
+    <section className="bg-white rounded-md w-full sm:w-[550px] lg:w-[900px]">
       <article className="border border-gray-200 rounded-md p-5">        
         <section className="flex flex-row gap-5">
           <div className="flex flex-col">
