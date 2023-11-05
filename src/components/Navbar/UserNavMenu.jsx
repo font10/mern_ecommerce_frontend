@@ -22,7 +22,7 @@ export const UserNavMenu = () => {
         {user ? (
           <figure className="flex flex-row gap-3 items-center ml-2">
             <img src={profile} width={30} alt="profile pic" />
-            <figcaption className="classes.username font-medium">
+            <figcaption className="text-sm font-medium">
               {user && user.username}
             </figcaption>
           </figure>
@@ -47,7 +47,7 @@ export const UserNavMenu = () => {
         )}
       </section>
       { modalUser && (
-        <section className="absolute top-[87px] right-36 bg-slate-100 w-[150px] h-24 rounded-md shadow-lg ">
+        <section className="absolute top-[87px] right-[2%] xl:right-[8%] bg-slate-100 w-[150px] h-24 rounded-md shadow-lg ">
           {menuModalUser.map((item) => (
             <Link
               to={item.path}

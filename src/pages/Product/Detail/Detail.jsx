@@ -14,7 +14,7 @@ export const Detail = () => {
   return (
     <div className="flex items-center justify-center mx-auto w-10/12 xl:w-8/12 mt-16">
       <section className="flex flex-col w-full">
-        <section className="flex flex-row">
+        <section className="flex flex-col lg:flex-row">
           <article className="w-full h-full">
             <GalleryProduct product={product} />
           </article>

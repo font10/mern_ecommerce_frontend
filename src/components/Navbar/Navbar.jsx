@@ -11,12 +11,6 @@ import { UserNavMenu } from "./UserNavMenu";
 export const Navbar = () => {
   const { showCart, products } = useSelector(state => state.cart)
   const dispatch = useDispatch()
-  //const navigate = useNavigate()
-
-  /*const handleLogout = () => {
-    dispatch(logout())
-    navigate(route.root.path)
-  }*/
 
   const handleToggleCart = () => {
     dispatch(toggleShowCart())
@@ -29,10 +23,6 @@ export const Navbar = () => {
           <img src={logo} width={70} alt="profile pic" className="ml-5 xl:ml-0" />
         </Link>
         <section className="flex items-center gap-4">
-          <Link to={route.product.create.path} className="classes.createBtn font-medium">
-            Create
-          </Link>
-
           <div className="relative flex flex-row gap-2 px-4 py-1.5 mr-2 cursor-pointer bg-gray-200 rounded-full font-roboto font-medium text-gray-800" onClick={handleToggleCart}>
             <AiOutlineShoppingCart size={20} /> Items
             <span className="absolute flex items-center justify-center left-6 -top-1 w-5 h-5 rounded-full bg-blue-400 text-white font-semibold  text-sm">{products.length}</span>
