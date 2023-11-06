@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
 import { useGetCountriesQuery } from "../../services/externalApi"
 import { useGetAddressByIdQuery, useEditAddressMutation } from "../../services/addressesApi"
+import { Loading } from "../Loading/Loading"
 
 export const EditAddress = () => {
   //const { user, token } = useSelector(state => state.auth)
@@ -39,7 +40,7 @@ export const EditAddress = () => {
     updateAddress({ token, newAddress })
   }
 
-  if(isLoading) return <div>Loading...</div>
+  if(isLoading) return <Loading />
   else if(isError) return <div>Error: {error}</div>
 
   return (

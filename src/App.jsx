@@ -1,7 +1,7 @@
 import { Layout } from './components/index'
 import { Routes, Route } from 'react-router-dom'
 import { route } from './models/route.model'
-import { Address, Create, Checkout, Detail, Final, Home, Login, ProductsFilter, SignUp, Dashboard } from './pages/index'
+import { Address, Create, Checkout, Detail, Final, Home, Login, SignUp, Dashboard, ProductsFilterLayout } from './pages/index'
 import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute'
 import { ProfileLayout } from './components/index'
 import { useSelector } from 'react-redux'
@@ -25,7 +25,7 @@ function App() {
           </Route>
           <Route path={ route.signup.path } element={<SignUp />} />
           <Route path={ route.root.path } element={<Home />} />
-          <Route path={ route.product.productFilter.path } element={<ProductsFilter />} />
+          <Route path={ route.product.productFilter.path } element={<ProductsFilterLayout />} />
           <Route path={ route.login.path } element={<Login />} />
           <Route path={`${route.product.productDetail.path}/:id`} element={<Detail />} />
         </Routes>

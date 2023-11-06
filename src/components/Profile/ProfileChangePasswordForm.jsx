@@ -18,7 +18,6 @@ export const ProfileChangePasswordForm = () => {
 
     const userInfo = { id: user._id, password }
     
-    
     changePassword({ token, userInfo })
     e.target.elements.password.value = ''
     e.target.elements.confirmPassword.value = ''

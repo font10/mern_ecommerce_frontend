@@ -1,13 +1,14 @@
 import { useSelector } from "react-redux"
 import { useGetCountriesQuery } from "../../services/externalApi"
 import { useCreateAddressMutation } from "../../services/addressesApi"
+import { Loading } from "../Loading/Loading"
 
 export const CreateAddress = () => {
   const { user, token } = useSelector(state => state.auth)
   const { data: countries, isError, isLoading, error } = useGetCountriesQuery()
   const [ createAddress ] = useCreateAddressMutation()
 
-  if(isLoading) return <div>Loading...</div>
+  if(isLoading) return <Loading />
   else if(isError) return <div>Error: {error}</div>
 
   const handleSubmit = (e) => {

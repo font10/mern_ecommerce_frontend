@@ -1,33 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  modalFilterProduct: {
-    category: false,
-    price: false,
-    size: false,
-    stars: false
-  },
+  urlFilter: '/product/filter',
 }
 
 export const productFilterSlice = createSlice({
   name: 'productfilter',
   initialState,
   reducers: {
-    changeModalCategory(state) {
-      state.modalFilterProduct.category = !state.modalFilterProduct.category
-    },
-    changeModalPrice(state) {
-      state.modalFilterProduct.price = !state.modalFilterProduct.price
-    },
-    changeModalSize(state) {
-      state.modalFilterProduct.size = !state.modalFilterProduct.size
-    },
-    changeModalStars(state) {
-      state.modalFilterProduct.stars = !state.modalFilterProduct.stars
-    },
+    addUrlFilter(state, action) {
+      state.urlFilter = action.payload
+    }
   }
 })
 
-export const { changeModalCategory, changeModalPrice, changeModalSize, changeModalStars } = productFilterSlice.actions
+export const { addUrlFilter } = productFilterSlice.actions
 
 export default productFilterSlice.reducer

@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom'
 import { List } from '../../components/index'
 import { useGetProductsQuery } from '../../services/productApi'
 import { route } from '../../models/route.model'
+import { Loading } from '../../components/Loading/Loading'
 
 export const Products = () => {
-  const { data: products, isError, isLoading, error } = useGetProductsQuery()
+  const { data: products, isError, isLoading, error } = useGetProductsQuery({ refetchOnMountOrArgChange: true })
   
-  if(isLoading) return <div>Loading...</div>
+  if(isLoading) return <Loading />
   else if(isError) return <div>Error: {error.message}</div>
 
   return (
@@ -25,47 +26,3 @@ export const Products = () => {
     </div>
   )
 }
-
-
-/*
-
-<section className='flex flex-row gap-3 justify-center'>          
-          {
-            filterMenus.map(menu => (
-              <FilterMenu key={crypto.randomUUID()} name={menu.name} />
-            ))
-          }
-        </section>
-
-        <section className='z-20'>
-          { modalFilterProduct.category && 
-            <ModalFilter
-              arrayFilter={categories}
-              margin='ml-0'
-              text='Category'
-            />
-          }
-          { modalFilterProduct.price && 
-            <ModalFilter
-              arrayFilter={rangePrice}
-              margin='ml-[15rem]'
-              text='Price'
-            />
-          }
-          { modalFilterProduct.size && 
-            <ModalFilter
-              arrayFilter={size}
-              margin='ml-[29.5rem]'
-              text='Size'
-            />
-          }
-          { modalFilterProduct.stars && 
-            <ModalFilter
-              arrayFilter={rangeStars}
-              margin='ml-[44.5rem]'
-              text='Stars'
-            />
-          }
-        </section>
-
-        */
