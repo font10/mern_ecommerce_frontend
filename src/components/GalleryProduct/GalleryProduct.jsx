@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { useState } from "react"
 
 export const GalleryProduct = ({ product }) => {
-  console.log(product)
   const initialCurrentImage = `http://localhost:5000/images/` + product?.images[0].split('___').splice(1)
   const [currentImage, setCurrentImage] = useState(initialCurrentImage)
 

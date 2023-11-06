@@ -37,8 +37,6 @@ export const CreateAddress = () => {
       addressDefault
     }
 
-    console.log(newAddress)
-
     createAddress({ token, newAddress })
   }
 

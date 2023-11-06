@@ -19,7 +19,6 @@ export const DetailProduct = ({ product }) => {
   const getItemPriceQuantity = (quantity, price) => { return (quantity * price).toFixed(2) }
 
   const addProductToCart = () => {
-    console.log(quantityProduct)
     dispatch(
       addProduct({
         quantity: quantityProduct,

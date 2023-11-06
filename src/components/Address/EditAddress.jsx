@@ -36,7 +36,6 @@ export const EditAddress = () => {
       zipCode: zipCode,
     }
 
-    console.log(newAddress)
     updateAddress({ token, newAddress })
   }
 

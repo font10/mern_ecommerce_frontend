@@ -11,14 +11,12 @@ export const addressSlice = createSlice({
   initialState,
   reducers: {
     submitAddress(state, action){
-      console.log(action.payload)
       state.address = action.payload
     },
     emptyAddress(state) {
       state.address = {}
     },
     idToEdit(state, action) {
-      console.log(action.payload)
       state.idEdit = action.payload
     },
     modalFormToTrue(state) {
