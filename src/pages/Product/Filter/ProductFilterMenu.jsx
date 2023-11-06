@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { optionsFilter } from "../../../utils/constants"
 import { addUrlFilter } from "../../../redux/slices/productFilterSlice";
-import { IoIosArrowDown } from '../../../utils/icons'
 import { useState } from "react";
 
 export const ProductFilterMenu = () => {
@@ -29,8 +28,8 @@ export const ProductFilterMenu = () => {
           optionsFilter.map(item => (
             <div key={crypto.randomUUID()} className="flex flex-col items-between">
               
-              <h4 className="flex flex-wrap justify-between items-center font-roboto font-medium text-lg mt-6">{capitalize(item?.name)}<IoIosArrowDown /></h4>
-              <hr className="my-2 bg-gray-400 h-0.5"/>
+              <h4 className="flex flex-wrap justify-between items-center font-roboto font-medium text-xl mt-6">{capitalize(item?.name)}</h4>
+              <hr className="my-2 bg-gray-100 h-0.5"/>
               { item.options.map(option => (
                 <div key={option} className="flex flex-row">
                   <input 

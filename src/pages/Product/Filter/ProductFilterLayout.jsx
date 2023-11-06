@@ -14,7 +14,7 @@ export const ProductsFilterLayout = () => {
       <p className="mt-8 font-medium text-lg text-gray-400 font-roboto tracking-wider">Lorem ipsum may be used as a placeholder before final copy as a placeholder is available</p>
 
       <section className="flex flex-wrap gap-3 mt-10 w-full">
-        <section className="w-2/12 bg-gray-100"><ProductFilterMenu /></section>
+        <section className="w-2/12 bg-gray-50 rounded-md"><ProductFilterMenu /></section>
         <section className="flex-1"><ProductsFilter /></section>
       </section>
     </div>
