@@ -40,6 +40,16 @@ export const route = {
       title: 'Product Detail',
       path: '/product-detail',
     },
+    productFilter: {
+      title: 'Product Filter',
+      path: '/product-filter',
+    },
+  },
+  admin: {
+    dashboard: {
+      title: 'Dashboard',
+      path: '/dashboard',
+    },
   }
   
 }

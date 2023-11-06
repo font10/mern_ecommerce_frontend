@@ -22,6 +22,7 @@ import { ProfileChangePasswordForm } from './Profile/ProfileChangePasswordForm'
 import { ProfileLayout } from './Profile/ProfileLayout'
 import { ProfileChangePersonalInfo } from './Profile/ProfileChangePersonalInfo'
 import { ProfileUserForm } from './Profile/ProfileUserForm'
+import { UserNavMenu } from './UserNavMenu/UserNavMenu'
 
 export {
   AddressList,
@@ -47,5 +48,6 @@ export {
   ProfileChangePasswordForm,
   ProfileLayout,
   ProfileChangePersonalInfo,
-  ProfileUserForm
+  ProfileUserForm,
+  UserNavMenu
 }

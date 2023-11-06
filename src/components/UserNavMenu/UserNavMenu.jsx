@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { route } from "../../models/route.model";
 import profile from "../../assets/images/profile.png";
 import { IoIosArrowDown, IoIosArrowUp } from "../../utils/icons";
@@ -6,11 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from '../../redux/slices/authSlice'
 import { Link } from "react-router-dom";
 import { menuModalUser } from "../../utils/constants";
+import { useDropdownClose } from "../../hooks/useDropdownClose";
 
 export const UserNavMenu = () => {
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state.auth);
-  const [modalUser, setModalUser] = useState(false);
+  const ref = useRef()
+  const { modalUser, setModalUser } = useDropdownClose(ref)
   
   const handleLogout = () => {
     dispatch(logout())
@@ -47,7 +49,7 @@ export const UserNavMenu = () => {
         )}
       </section>
       { modalUser && (
-        <section className="absolute top-[87px] right-[2%] xl:right-[8%] bg-slate-100 w-[150px] h-24 rounded-md shadow-lg ">
+        <section ref={ref} className="absolute top-[87px] right-[2%] xl:right-[8%] bg-slate-100 w-[150px] h-24 rounded-md shadow-lg ">
           {menuModalUser.map((item) => (
             <Link
               to={item.path}

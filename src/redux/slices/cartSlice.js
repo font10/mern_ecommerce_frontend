@@ -29,12 +29,15 @@ export const cartSlice = createSlice({
     toggleShowCart: (state) => {
       state.showCart = !state.showCart
     },
+    showCartToFalse: (state) => {
+      state.showCart = false
+    },
     calculateTotal: (state) => {
       state.total = state.products.reduce((acumulador, product) => acumulador + (product.quantity * product.price), 0);
     },
   }
 })
 
-export const { addProduct, removeProduct, emptyCart, editProduct, toggleShowCart, calculateTotal } = cartSlice.actions
+export const { addProduct, removeProduct, emptyCart, editProduct, toggleShowCart, showCartToFalse, calculateTotal } = cartSlice.actions
 
 export default cartSlice.reducer
