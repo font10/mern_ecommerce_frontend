@@ -1,8 +1,8 @@
-import { AiOutlineStar, AiOutlineInstagram, AiOutlineFacebook, AiOutlineTwitter, AiFillStar, AiFillHeart, AiOutlineCloseCircle, AiOutlineShoppingCart } from 'react-icons/ai'
+import { AiOutlineStar, AiOutlineInstagram, AiOutlineFacebook, AiOutlineTwitter, AiOutlineMenu, AiFillStar, AiFillHeart, AiOutlineCloseCircle, AiOutlineShoppingCart } from 'react-icons/ai'
 import { BsCartFill, BsFillTrashFill } from 'react-icons/bs'
 import { CiCircleRemove } from 'react-icons/ci'
 import { CgProfile } from 'react-icons/cg'
-import { FaStar } from 'react-icons/fa'
+import { FaFilter, FaStar } from 'react-icons/fa'
 import { HiMinusSm, HiPlusSm } from 'react-icons/hi'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import { MdLogout } from 'react-icons/md'
@@ -14,6 +14,7 @@ export {
   AiOutlineCloseCircle,
   AiOutlineFacebook, 
   AiOutlineInstagram, 
+  AiOutlineMenu,
   AiOutlineShoppingCart,
   AiOutlineTwitter,
   AiOutlineStar,
@@ -21,6 +22,7 @@ export {
   BsFillTrashFill,
   CgProfile,
   CiCircleRemove,
+  FaFilter,
   FaStar,
   HiMinusSm, 
   HiPlusSm,

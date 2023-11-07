@@ -5,6 +5,7 @@ import { showCartToFalse } from "../redux/slices/cartSlice";
 export const useSidebarCartClose = ( ref ) => {
   const dispatch = useDispatch()
   const { showCart } = useSelector(state => state.cart)
+  const { showSidebar } = useSelector(state => state.productfilter)
 
   useEffect(() => {
     const checkIfClickedOutside = e => {
@@ -18,7 +19,7 @@ export const useSidebarCartClose = ( ref ) => {
     return () => {
       document.removeEventListener("mousedown", checkIfClickedOutside)
     }
-  }, [showCart])
+  }, [showCart, showSidebar])
 
   return { showCart }
 }

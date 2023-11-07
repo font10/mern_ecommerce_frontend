@@ -11,11 +11,10 @@ export const ProductsFilterLayout = () => {
       <header>
         <h1 className="text-6xl text-gray-900 font-roboto font-semibold">Shop Now, Goodlook Later</h1>
       </header>
-      <p className="mt-8 font-medium text-lg text-gray-400 font-roboto tracking-wider">Lorem ipsum may be used as a placeholder before final copy as a placeholder is available</p>
 
       <section className="flex flex-wrap gap-3 mt-10 w-full">
-        <section className="w-2/12 bg-gray-50 rounded-md"><ProductFilterMenu /></section>
-        <section className="flex-1"><ProductsFilter /></section>
+        <section className="w-full lg:w-2/12 bg-gray-50 rounded-md"><ProductFilterMenu /></section>
+        <section className="w-full lg:flex-1"><ProductsFilter /></section>
       </section>
     </div>
   )

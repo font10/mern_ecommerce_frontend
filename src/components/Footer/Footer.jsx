@@ -11,15 +11,6 @@ export const Footer = () => {
           <span className='font-md text-gray-600'>What currency we accept</span>
           <span className='font-md text-gray-600'>Privacy Policy</span>
         </nav>
-        <section className="flex flex-1 flex-col gap-3 p-5">
-          <h2 className='text-xl font-medium'>About</h2>
-          <p className="max-w-[500px] text-justify">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis imperdiet velit. 
-            Proin in vehicula risus. Integer ut arcu egestas, viverra turpis a, suscipit lorem. 
-            Sed lobortis non erat in rhoncus. Etiam ac congue leo. Quisque fringilla eros sit 
-            amet leo fermentum, vel aliquet nulla accumsan.
-          </p>
-        </section>
         <section className="flex flex-1 flex-col items-end h-full justify-start gap-3 p-5">
           <h2 className='text-xl font-medium'>Contact</h2>
           <aside className="flex flex-wrap gap-2">
