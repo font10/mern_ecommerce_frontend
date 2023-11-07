@@ -10,12 +10,12 @@ export const CommentsProfile = () => {
   const formatDate = (data) => { return new Date(data).toLocaleDateString() }
   
   const handleDelete = (id) => {
-    deleteOrder({ id, token })
+    const res = deleteOrder({ id, token })
+    console.log(res)
   }
   
   return (
     <div className="mt-9">
-      Comments Profile
       <section className="mt-10">
       {
         data?.comments?.map(comm => (

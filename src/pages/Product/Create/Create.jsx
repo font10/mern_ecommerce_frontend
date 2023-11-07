@@ -46,7 +46,7 @@ export const Create = () => {
         formData.append(`images`, file);
       });
 
-      await axios.post(`http://localhost:5000/files/firstimg`, formData, { headers: {
+      await axios.post(`https://mern-ecommerce-api-b2jl.onrender.com/files/firstimg`, formData, { headers: {
         'Content-Type': 'multipart/form-data',
         'Authorization': `Bearer ${token}`
       }})

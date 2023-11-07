@@ -20,7 +20,8 @@ export const CreateComment = ({ id }) => {
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    createComment({ token, inputs })
+    const res = createComment({ token, inputs })
+    console.log(res)
   }
 
   const handleInputs = (e) => {
