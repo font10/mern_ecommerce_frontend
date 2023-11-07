@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const ordersApi = createApi({
   reducerPath: 'ordersApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://mern-ecommerce-backend-liart.vercel.app',
+    baseUrl: 'http://mern-ecommerce-backend-liart.vercel.app',
   }),
  endpoints: (builder) => ({
   getOrdersByUser: builder.query({
