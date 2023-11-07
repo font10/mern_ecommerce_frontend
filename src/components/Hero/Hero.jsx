@@ -1,3 +1,4 @@
+import { best_seller, new_arrival } from "../../assets/images"
 
 export const Hero = () => {
   return (
@@ -10,7 +11,7 @@ export const Hero = () => {
           <button className='px-10 py-3 bg-cyan-600 hover:bg-cyan-500 rounded-full text-md text-white tracking-widest'>View Product</button>
         </article>
         <figure className='w-5/12 p-5'>
-          <img src={`http://localhost:5000/images/new_arrival.png`} />
+          <img src={new_arrival} />
         </figure>
       </section>
       <section className='bg-orange-400 bg-opacity-20 p-8 rounded-xl w-full xl:w-4/12'>
@@ -20,7 +21,7 @@ export const Hero = () => {
         </article>
         <figure className='flex flex-row h-5/12 items-start mt-8'>
           <button className='px-6 py-3 rounded-full text-white bg-cyan-600 font-medium tracking-wider'>Details</button>
-          <img src={`http://localhost:5000/images/best_seller.png`} width={400} className='-mt-14 -ml-8 xl:-mt-20 ' />
+          <img src={best_seller} width={400} className='-mt-14 -ml-8 xl:-mt-20 ' />
         </figure>
       </section>
     </section>
