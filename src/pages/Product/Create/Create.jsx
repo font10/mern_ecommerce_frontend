@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { route } from '../../../models/route.model'
 import { useNavigate } from 'react-router-dom'
 import { categories, gender } from '../../../utils/constants'
+import { useCreateProductMutation } from '../../../services/productApi'
 
 export const Create = () => {
   const navigate = useNavigate()
@@ -18,6 +19,7 @@ export const Create = () => {
     gender: 'Male',
     starts: '1'
   })
+  const [createProduct] = useCreateProductMutation()
 
   const onChangeFileFirst = (e) => {
     setInputs({ ...inputs, images: e.target.files })
@@ -54,10 +56,7 @@ export const Create = () => {
         images: filesnames,
       }      
       
-      await axios.post(`http://localhost:5000/product`, newProduct, { headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }})
+      await createProduct({ token, newProduct})
       navigate(route.root.path)
     } catch (err) {
       console.log(err)

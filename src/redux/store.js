@@ -18,6 +18,7 @@ import { externalApi } from "../services/externalApi";
 import ordersSlice from "./slices/ordersSlice";
 import { ordersApi } from "../services/ordersApi";
 import { userApi } from "../services/userApi";
+import { authApi } from "../services/authApi";
 
 const persistConfig = {
   key: "root",
@@ -38,6 +39,7 @@ const reducers = combineReducers({
   [externalApi.reducerPath]: externalApi.reducer,
   [ordersApi.reducerPath]: ordersApi.reducer,
   [userApi.reducerPath]: userApi.reducer,
+  [authApi.reducerPath]: authApi.reducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers);
@@ -50,7 +52,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(productApi.middleware).concat(commentApi.middleware).concat(addressesApi.middleware).concat(externalApi.middleware).concat(ordersApi.middleware).concat(userApi.middleware)
+    }).concat(productApi.middleware).concat(commentApi.middleware).concat(addressesApi.middleware).concat(externalApi.middleware).concat(ordersApi.middleware).concat(userApi.middleware).concat(authApi.middleware)
 });
 
 export let persistor = persistStore(store);

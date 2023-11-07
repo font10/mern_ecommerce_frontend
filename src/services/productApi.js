@@ -25,7 +25,19 @@ export const productApi = createApi({
     method: 'GET',
     providesTags: ['Products'],  
   }),
+  createProduct: builder.mutation({
+    query: ({token, ...newProduct}) => ({
+      url: '/product',
+      method: 'POST',
+      body: newProduct.newProduct,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    }),
+    invalidatesTags: ['Products']
+  }),
  })
 })
 
-export const { useGetProductsQuery, useGetProductsByFilterQuery, useGetProductByIdQuery } = productApi
+export const { useGetProductsQuery, useGetProductsByFilterQuery, useGetProductByIdQuery, useCreateProductMutation } = productApi

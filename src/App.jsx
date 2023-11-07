@@ -17,10 +17,10 @@ function App() {
             <Route path={ route.checkout.path } element={<Checkout />} />
             <Route path={ route.final.path } element={<Final />} />
             <Route path={ route.address.path } element={<Address />} />
-            <Route path={ route.product.create.path } element={<Create />} />
             <Route path={ route.profile.path } element={<ProfileLayout />} />
           </Route>
           <Route element={<ProtectedRoute isAllowed={!!user && user.isAdmin} />} >
+            <Route path={ route.product.create.path } element={<Create />} />
             <Route path={ route.admin.dashboard.path } element={<Dashboard />} />
           </Route>
           <Route path={ route.signup.path } element={<SignUp />} />

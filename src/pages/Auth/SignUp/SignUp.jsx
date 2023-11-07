@@ -1,21 +1,23 @@
 import { useState } from 'react'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { route } from '../../../models/route.model'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { register } from '../../../redux/slices/authSlice'
+import { useSignUpMutation } from '../../../services/authApi'
 
 export const SignUp = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [error, setError] = useState(false)
-  const [errorMsg, setErrorMsg] = useState('')
   const [inputs, setInputs] = useState({
     username: '',
     email: '',
     password: '',
+    firstName: '',
+    lastName: '',
+    birthdate: ''
   })
+  const [signUp, { isError, error }] = useSignUpMutation()
 
   const handleInputs = (e) => {
     const { name, value } = e.target
@@ -26,23 +28,13 @@ export const SignUp = () => {
     e.preventDefault()
 
     try {
-      const { data, status } = await axios.post(`http://localhost:5000/auth/signup`, inputs)
-
-      if(status === 404 || status === 500) {
-        setError(true)
-        setErrorMsg(error.response.data.message.toString())
-        setTimeout(() => {
-          setError(false)
-        }, 2000);
-      }
+      //const { data, status } = await axios.post(`http://localhost:5000/auth/signup`, inputs)
+      const infoSignUp = inputs 
+      const { data } = await signUp(infoSignUp)
       dispatch(register(data))
-      navigate( route.root.path)
+      navigate( route.login.path)      
     } catch (error) {
-      setError(true)
-      setErrorMsg(error.response.data.message.toString())
-      setTimeout(() => {
-        setError(false)
-      }, 2000);
+      throw new Error(error)
     }
   }
 
@@ -52,9 +44,9 @@ export const SignUp = () => {
         <h2 className='font-medium font-roboto text-2xl text-black'>Sign Up</h2>
 
         {
-          error &&
+          isError &&
           <p className='w-full h-10 rounded-md border border-red-300 text-red-400 bg-red-200 flex justify-center items-center font-medium mt-5'>
-            { errorMsg }
+            { error }
           </p>
         }
 

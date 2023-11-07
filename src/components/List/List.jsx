@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { ProductCard } from "../ProductCard/ProductCard";
 
-export const List = ({ products = [] }) => {
+export const List = ({ products }) => {
   
   return (
     <section className="flex flex-col justify-center items-center mt-5 w-full">

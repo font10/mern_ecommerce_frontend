@@ -15,7 +15,7 @@ export const ProtectedRoute = ({ isAllowed, redirectTo }) => {
 
 ProtectedRoute.propTypes = {
   redirectTo: PropTypes.node.isRequired,
-  isAllowed: PropTypes.any.isRequired,
+  isAllowed: PropTypes.any,
 };
 
 ProtectedRoute.defaultProps = {
