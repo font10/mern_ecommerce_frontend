@@ -8,7 +8,7 @@ export const ProductCard = ({ product }) => {
   return (
     <section className="bg-white w-full shadow-xl rounded-md hover:scale-105 ease-in-out transition duration-300 w-[360px]">
       <Link to={`${route.product.productDetail.path}/${product._id}`} className="wrapper">
-        <img src={product.images[0].split('___').splice(1)} alt="pic product card" className="firstimg h-64 w-full rounded-tl-md rounded-tr-md object-cover" />
+        <img src={`https://mern-ecommerce-frontend-three.vercel.app/images/` + product.images[0].split('___').splice(1)} alt="pic product card" className="firstimg h-64 w-full rounded-tl-md rounded-tr-md object-cover" />
         <article className="flex flex-col p-5">
           <h2 className="font-medium text-xl">{product.title}</h2>
           <div className="flex flex-row justify-between items-center text-sm">
