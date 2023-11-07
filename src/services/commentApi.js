@@ -5,7 +5,7 @@ export const commentApi = createApi({
   reducerPath: 'commentApi',
 
  baseQuery: fetchBaseQuery({
-  baseUrl: 'http://mern-ecommerce-backend-liart.vercel.app',
+  baseUrl: 'https://mern-ecommerce-backend-liart.vercel.app',
  }),
 
  endpoints: (builder) => ({
