@@ -29,7 +29,7 @@ export const DetailProduct = ({ product }) => {
         category: product?.category,
         gender: product?.gender,
         size: sizeProduct,
-        mainImg: product?.images[0],
+        mainImg: product?.images[0].url,
         secretId: product?._id + sizeProduct
       })
     );

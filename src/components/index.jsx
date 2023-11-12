@@ -12,6 +12,7 @@ import { GalleryProduct } from './GalleryProduct/GalleryProduct'
 import { Hero } from './Hero/Hero'
 import { Layout } from './Layout/Layout'
 import { List } from './List/List'
+import { Loading } from './Loading/Loading'
 import { ModalFilter } from './ModalFilter/ModalFilter'
 import { Navbar } from './Navbar/Navbar'
 import { OrdersList } from './Orders/OrdersList'
@@ -39,6 +40,7 @@ export {
   Hero,
   Layout,
   List,
+  Loading,
   ModalFilter,
   Navbar,
   NoOrders,

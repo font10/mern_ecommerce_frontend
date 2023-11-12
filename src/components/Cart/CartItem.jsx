@@ -28,8 +28,8 @@ export const CartItem = ({ product }) => {
     <article className="flex gap-4 relative w-full">
       <Link to={`${route.product.productDetail.path}/${product.id}`}>
         <img 
-          src={`http://localhost:5000/images/` + product?.mainImg.split('___').splice(1)}
-          className="rounded-sm object-cover w-32" 
+          src={product?.mainImg.url}
+          className="rounded-sm object-cover h-28" 
         />
       </Link>
       <section className="flex flex-col w-full">

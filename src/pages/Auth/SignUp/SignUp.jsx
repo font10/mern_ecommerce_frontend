@@ -28,7 +28,6 @@ export const SignUp = () => {
     e.preventDefault()
 
     try {
-      //const { data, status } = await axios.post(`http://localhost:5000/auth/signup`, inputs)
       const infoSignUp = inputs 
       const { data } = await signUp(infoSignUp)
       dispatch(register(data))

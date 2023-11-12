@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { ResumeCartItem } from "./ResumeCartItem"
-import { addProducts, addUserId } from "../../redux/slices/ordersSlice"
+import { addProducts, addUserId, resetOrderToAdd } from "../../redux/slices/ordersSlice"
 import { useCreateOrderMutation } from "../../services/ordersApi"
 import { useNavigate } from "react-router-dom"
 import { route } from "../../models/route.model"
@@ -13,12 +13,12 @@ export const ResumeCart = () => {
   const { orderToAdd } = useSelector(state => state.orders)
   const [createOrder] = useCreateOrderMutation()
 
-
   const handleCheckout = () => {
     dispatch(addProducts(products))
     dispatch(addUserId(user._id))
 
     createOrder({token, orderToAdd})
+    dispatch(resetOrderToAdd())
     navigate(route.profile.path)
   }
 

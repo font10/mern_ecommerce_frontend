@@ -1,15 +1,20 @@
 import { AiOutlineCloseCircle } from '../../../utils/icons'
 import { useState } from 'react'
-import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { route } from '../../../models/route.model'
 import { useNavigate } from 'react-router-dom'
 import { categories, gender } from '../../../utils/constants'
 import { useCreateProductMutation } from '../../../services/productApi'
+import { Loading } from '../../../components/index'
+import { uploadImages } from '../../../services/filesApi'
 
 export const Create = () => {
   const navigate = useNavigate()
   const { token } = useSelector(state => state.auth)
+  const [createProduct] = useCreateProductMutation()
+  const [showModal, setShowModal] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [message, setMessage] = useState('')
   const [inputs, setInputs] = useState({
     title: '',
     desc: '',
@@ -19,7 +24,6 @@ export const Create = () => {
     gender: 'Male',
     starts: '1'
   })
-  const [createProduct] = useCreateProductMutation()
 
   const onChangeFileFirst = (e) => {
     setInputs({ ...inputs, images: e.target.files })
@@ -37,6 +41,9 @@ export const Create = () => {
     e.preventDefault()
     
     try {
+      setShowModal(true)
+      setIsLoading(true)
+      setMessage('Uploading images, creating product...')
       let filesnames = []
       const files = inputs.images ? [...inputs.images] : [];
       
@@ -46,17 +53,18 @@ export const Create = () => {
         formData.append(`images`, file);
       });
 
-      await axios.post(`https://mern-ecommerce-api-b2jl.onrender.com/files/firstimg`, formData, { headers: {
-        'Content-Type': 'multipart/form-data',
-        'Authorization': `Bearer ${token}`
-      }})
-
+      const data = await uploadImages(token, formData)
+      
       const newProduct = {
         ...inputs,
-        images: filesnames,
-      }      
-      
+        images: data.images,
+      }
       await createProduct({ token, newProduct})
+      
+      setShowModal(false)
+      setIsLoading(false)
+      setMessage('')
+      
       navigate(route.root.path)
     } catch (err) {
       console.log(err)
@@ -64,9 +72,20 @@ export const Create = () => {
   }
 
   return (
-    <main className="flex justify-center w-4/12 mx-auto mt-10">
+    <main className="flex justify-center sm:w-8/12 xl:w-4/12 mx-auto mt-10">
       <section className="flex flex-col p-10 shadow-xl rounded-sm w-full">
-        
+          { showModal && (
+            <div className='bg-blue-200 shadow-md rounded-md absolute top-[35%] left-[41%]'>
+              <div className='h-64 w-96'>
+                { isLoading && (
+                  <div className='flex flex-col items-center'>
+                    <Loading />
+                    <p className='font-roboto font-medium text-xl'>{message}</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
           <form onSubmit={handleCreateProduct} encType="multipart/form-data">            
             <article className='flex flex-col w-full'>
               <label className='font-medium text-gray-700'>Title</label>

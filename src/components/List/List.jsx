@@ -19,5 +19,5 @@ export const List = ({ products }) => {
 }
 
 List.propTypes = {
-  products: PropTypes.object,
+  products: PropTypes.array,
 };

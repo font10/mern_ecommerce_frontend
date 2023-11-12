@@ -21,9 +21,12 @@ export const ordersSlice = createSlice({
     addProducts(state, action) {
       state.orderToAdd.products = action.payload      
     },
+    resetOrderToAdd(state) {
+      state.orderToAdd = { address: '', paymentMethod: '', userId: '', products: '' }
+    }
   }
 })
 
-export const { addAddress, addPaymentMethod, addProducts, addUserId } = ordersSlice.actions
+export const { addAddress, addPaymentMethod, addProducts, addUserId, resetOrderToAdd } = ordersSlice.actions
 
 export default ordersSlice.reducer
