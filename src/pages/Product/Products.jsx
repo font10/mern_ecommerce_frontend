@@ -10,6 +10,8 @@ export const Products = () => {
   if(isLoading) return <Loading />
   else if(isError) return <div>Error: {error.message}</div>
 
+  console.log(products)
+
   return (
     <div className="flex flex-col justify-center items-center p-5 w-full mt-20 font-roboto">
       <header>
