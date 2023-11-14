@@ -4,7 +4,7 @@ export const addressesApi = createApi({
   reducerPath: 'addressesApi',
 
  baseQuery: fetchBaseQuery({
-  baseUrl: 'https://mern-ecommerce-api-b2jl.onrender.com',
+  baseUrl: 'https://mern-ecommerce-backend-liart.vercel.app',
  }),
 
  endpoints: (builder) => ({
