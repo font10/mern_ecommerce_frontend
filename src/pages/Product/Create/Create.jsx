@@ -75,7 +75,7 @@ export const Create = () => {
     <main className="flex justify-center sm:w-8/12 xl:w-4/12 mx-auto mt-10">
       <section className="flex flex-col p-10 shadow-xl rounded-sm w-full">
           { showModal && (
-            <div className='bg-blue-200 shadow-md rounded-md absolute top-[35%] left-[41%]'>
+            <div className='bg-white shadow-xl rounded-md absolute top-[35%] left-[41%]'>
               <div className='h-64 w-96'>
                 { isLoading && (
                   <div className='flex flex-col items-center'>

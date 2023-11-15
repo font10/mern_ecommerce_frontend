@@ -20,7 +20,7 @@ export const Products = () => {
       <p className="mt-8 font-medium text-lg text-gray-400 tracking-wider">Lorem ipsum may be used as a placeholder before final copy as a placeholder is available</p>
 
       <section className='flex flex-wrap justify-center gap-3 w-full mx-auto px-6 mt-8'>
-        { products.products && <List products={products.products ? products.products : [] } /> }
+        { products.products && <List products={products.products ? products.products.slice(0,8) : [] } /> }
         { error && <h1>No products or server is not responding</h1> }
       </section>
 
